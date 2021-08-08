@@ -29,15 +29,16 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws IOException, ServletException {
         String header = request.getHeader(JwtProperties.HEADER_STRING);
+
         if(header == null || !header.startsWith(JwtProperties.TOKEN_PREFIX)) {
             chain.doFilter(request, response);
             return;
         }
-        System.out.println("header : "+header);
+
         String token = request.getHeader(JwtProperties.HEADER_STRING)
                 .replace(JwtProperties.TOKEN_PREFIX, "");
 
-        String username = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(token)
+        String username = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET_KEY)).build().verify(token)
                 .getClaim("username").asString();
 
         if(username != null) {
