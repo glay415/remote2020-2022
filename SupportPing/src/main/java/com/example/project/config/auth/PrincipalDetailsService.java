@@ -1,9 +1,8 @@
 package com.example.project.config.auth;
 
-import com.example.project.model.User;
-import com.example.project.repository.UserRepository;
+import com.example.project.domain.model.User;
+import com.example.project.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

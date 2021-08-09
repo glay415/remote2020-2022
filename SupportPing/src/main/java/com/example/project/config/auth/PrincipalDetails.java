@@ -1,7 +1,6 @@
 package com.example.project.config.auth;
 
-import com.example.project.model.User;
-import lombok.Data;
+import com.example.project.domain.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

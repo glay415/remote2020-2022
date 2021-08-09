@@ -1,6 +1,6 @@
-package com.example.project.dto;
+package com.example.project.web.dto;
 
-import com.example.project.model.User;
+import com.example.project.domain.model.User;
 import lombok.Data;
 
 @Data

@@ -1,4 +1,4 @@
-package com.example.project.config.jwt;
+package com.example.project.jwt;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;

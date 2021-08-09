@@ -1,8 +1,8 @@
 package com.example.project.config;
 
-import com.example.project.config.jwt.JwtAuthenticationFilter;
-import com.example.project.config.jwt.JwtAuthorizationFilter;
-import com.example.project.repository.UserRepository;
+import com.example.project.jwt.JwtAuthenticationFilter;
+import com.example.project.jwt.JwtAuthorizationFilter;
+import com.example.project.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

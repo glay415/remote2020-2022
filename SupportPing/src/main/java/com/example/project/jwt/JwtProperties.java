@@ -1,4 +1,4 @@
-package com.example.project.config.jwt;
+package com.example.project.jwt;
 
 public interface JwtProperties {
     String SECRET_KEY = "ialohfoiawfnwipenidpsjfnipawenipjsdifjanlowehsdijfadas";
