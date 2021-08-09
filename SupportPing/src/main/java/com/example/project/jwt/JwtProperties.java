@@ -1,8 +1,8 @@
 package com.example.project.config.jwt;
 
 public interface JwtProperties {
-    String SECRET = "DMS";
-    int EXPIRATION_TIME = 864000000;
+    String SECRET_KEY = "ialohfoiawfnwipenidpsjfnipawenipjsdifjanlowehsdijfadas";
+    int EXPIRATION_TIME = 1000 * 60 * 60 * 24 * 10;
     String TOKEN_PREFIX = "Bearer ";
     String HEADER_STRING = "Authorization";
 }

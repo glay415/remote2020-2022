@@ -3,7 +3,7 @@ package com.example.project.config.jwt;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.example.project.config.auth.PrincipalDetails;
-import com.example.project.dto.LoginDto;
+import com.example.project.web.dto.LoginDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -42,6 +42,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                         loginDto.getPassword());
 
         Authentication authentication =
+
+
                 authenticationManager.authenticate(authenticationToken);
 
         return authentication;
