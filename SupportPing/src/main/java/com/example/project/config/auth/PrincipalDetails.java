@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.ArrayList;
 import java.util.Collection;
 
-//Security Session => Authentication => UserDetails(PrincipalDetails)
 
 public class PrincipalDetails implements UserDetails{
 
