@@ -1,9 +1,12 @@
 package com.example.project.web.dto;
 
 import com.example.project.domain.model.User;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class JoinDto {
     private String name;
     private String username;
