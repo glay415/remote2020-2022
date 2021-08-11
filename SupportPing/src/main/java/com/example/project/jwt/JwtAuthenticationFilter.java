@@ -6,6 +6,7 @@ import com.example.project.config.auth.PrincipalDetails;
 import com.example.project.web.dto.LoginDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import org.json.simple.JSONObject;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -64,6 +65,15 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .sign(Algorithm.HMAC512(JwtProperties.SECRET_KEY));
 
         response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX+jwtToken);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("utf-8");
+
+        JSONObject BearerToken = new JSONObject();
+        BearerToken.put("Bearer-Token", JwtProperties.TOKEN_PREFIX+jwtToken);
+
+        String returnJwt = BearerToken.toString();
+
+        response.getWriter().write(returnJwt);
     }
 
 }
