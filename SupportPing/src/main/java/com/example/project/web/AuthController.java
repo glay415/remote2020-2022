@@ -1,5 +1,6 @@
 package com.example.project.web;
 
+import com.example.project.exception.UserAlreadyExistsException;
 import com.example.project.web.dto.JoinDto;
 import com.example.project.domain.model.User;
 import com.example.project.domain.repository.UserRepository;
@@ -18,6 +19,10 @@ public class AuthController {
 
     @PostMapping("/join")
     public User join(@RequestBody JoinDto joinDto) {
+        if(userRepository.existsByNameOrUsername(joinDto.getName(), joinDto.getUsername())) {
+            throw new UserAlreadyExistsException();
+        }
+
         joinDto.setPassword(bCryptPasswordEncoder.encode(joinDto.getPassword()));
         return userRepository.save(joinDto.toEntity());
     }
