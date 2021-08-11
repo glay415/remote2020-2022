@@ -1,5 +1,6 @@
 package com.example.project.service;
 
+import com.example.project.exception.ParticipantsAlreadyExceedException;
 import com.example.project.web.dto.BoardResponse;
 import com.example.project.domain.model.Participant;
 import com.example.project.domain.model.User;
@@ -40,6 +41,11 @@ public class UserService {
 
         Integer pp = boardRepository.findById(id).get().getPp();
         Integer finalPp = pp+1;
+
+        Integer mp = boardRepository.findById(id).get().getMp();
+        if(finalPp > mp) {
+            throw new ParticipantsAlreadyExceedException();
+        }
 
         boardRepository.findById(id)
                 .map(board -> {
