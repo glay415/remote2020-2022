@@ -20,8 +20,8 @@ public class BoardResponse {
         private String title;
         private String content;
         private String place;
-        private Integer mp;
         private Integer pp;
+        private Integer mp;
         private User user;
         private List<Participant> participants;
     }
