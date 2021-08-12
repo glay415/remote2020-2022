@@ -7,12 +7,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Entity
 @Builder
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
-@Entity
 @JsonIgnoreProperties({"password", "username", "roles"})
 public class User {
     @Id
