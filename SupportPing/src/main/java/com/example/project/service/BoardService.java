@@ -8,7 +8,6 @@ import com.example.project.domain.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -58,9 +57,8 @@ public class BoardService {
         return "success update";
     }
 
-    public String delete(User user, Integer boardId) {
+    public String delete(Integer boardId) {
         boardRepository.deleteById(boardId);
-
         return "success delete";
     }
 
