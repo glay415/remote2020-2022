@@ -3,10 +3,8 @@ package com.example.project.config.auth;
 import com.example.project.domain.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.ArrayList;
 import java.util.Collection;
-
 
 public class PrincipalDetails implements UserDetails{
 
