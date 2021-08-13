@@ -70,6 +70,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         JSONObject bearerToken = new JSONObject();
         bearerToken.put("Bearer-Token", JwtProperties.TOKEN_PREFIX+jwtToken);
+        bearerToken.put("User-Id", principalDetailis.getUser().getId());
 
         String returnJwt = bearerToken.toString();
 
