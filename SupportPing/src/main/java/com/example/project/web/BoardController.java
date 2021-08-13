@@ -33,9 +33,8 @@ public class BoardController {
     }
 
     @DeleteMapping("/user/delete/{board-id}")
-    public String delete(@AuthenticationPrincipal PrincipalDetails principal,
-                         @PathVariable(name = "board-id") Integer id) {
-        return boardService.delete(principal.getUser(), id);
+    public String delete(@PathVariable(name = "board-id") Integer id) {
+        return boardService.delete(id);
     }
 
 }
