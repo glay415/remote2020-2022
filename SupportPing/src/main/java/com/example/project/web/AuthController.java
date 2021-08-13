@@ -22,7 +22,6 @@ public class AuthController {
         if(userRepository.existsByNameOrUsername(joinDto.getName(), joinDto.getUsername())) {
             throw new UserAlreadyExistsException();
         }
-
         joinDto.setPassword(bCryptPasswordEncoder.encode(joinDto.getPassword()));
         return userRepository.save(joinDto.toEntity());
     }
