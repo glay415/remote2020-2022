@@ -4,6 +4,7 @@ import com.example.securitypractice.dto.JoinForm;
 import com.example.securitypractice.dto.LoginForm;
 import com.example.securitypractice.service.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,13 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     private UserService userService;
 
-    @PostMapping("/member/join")
+    @PostMapping("/join")
     public String userJoin(@RequestBody JoinForm joinForm){
         return userService.join(joinForm);
     }
 
-    @PostMapping("/member/login")
-    public String userLogin(@RequestBody LoginForm loginForm){
+    @PostMapping("/login")
+    public UserDetails userLogin(@RequestBody LoginForm loginForm){
         return userService.login(loginForm);
     }
 }
