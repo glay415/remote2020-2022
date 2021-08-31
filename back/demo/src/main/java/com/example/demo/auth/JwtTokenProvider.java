@@ -6,14 +6,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
 import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
@@ -24,6 +24,7 @@ import java.util.Map;
 public class JwtTokenProvider {
 
     private final UserRepository userRepository;
+    private final PrincipalDetailsService detailsService;
 //
 //    @Value("${jwt.exp.access}")
 //    private Long accessTokenExpiration;
@@ -55,45 +56,37 @@ public class JwtTokenProvider {
 
         return Jwts.builder()
                 .setHeader(headers)
-                .setClaims(payloads)
+                .setClaims(Jwts.claims().setSubject(username))
+                .setIssuedAt(now)
+                .setExpiration(new Date(now.getTime() + Duration.ofDays(1).toMillis()))
                 .signWith(SignatureAlgorithm.HS256, init())
                 .compact();
     }
 
-    public boolean validatedToken(String token) {
+    public boolean validateToken(String jwtToken) {
         try {
-            Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
-            return !getUser(token)
+            return !getUsername(jwtToken)
                     .getExpiration()
                     .before(new Date());
-        } catch (MalformedJwtException e) {
-            //log.info("잘못된 JWT 서명입니다.");
-
-        } catch (ExpiredJwtException e) {
-            //log.info("만료된 JWT 토큰입니다.");
-        } catch (UnsupportedJwtException e) {
-            //log.info("지원되지 않는 JWT 토큰입니다.");
-        } catch (IllegalArgumentException e) {
-            //log.info("JWT 토큰이 잘못되었습니다.");
+        } catch (Exception e){
+            System.out.println("오류1");
+            return false;
         }
-        return false;
-    }
-
-    public Claims getUser(String token) {
-        return Jwts.parser().setSigningKey(init()).parseClaimsJws(token).getBody();
     }
 
     public Authentication getAuthentication(String token) {
-        UserDetails userDetails = userRepository.findByUsername(this.getUser(token).getSubject())
-                .map(PrincipalDetails::new)
-                .orElseThrow();
+        UserDetails userDetails = detailsService.loadUserByUsername(this.getUsername(token).getSubject());
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
+    }
+
+    public Claims getUsername(String token) {
+        return Jwts.parser().setSigningKey(init()).parseClaimsJws(token).getBody();
     }
 
     public String resolveToken(HttpServletRequest request) {
         String token = request.getHeader(header);
 
-        if (StringUtils.hasText(token) && token.startsWith(prefix)) {
+        if (StringUtils.hasText(token) && token.startsWith("Bearer ")) {
             return token.substring(7);
         }
         return null;

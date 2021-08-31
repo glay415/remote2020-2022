@@ -19,7 +19,6 @@ public class LoginRequestDto {
         if(!passwordEncoder.matches(this.password, user.get().getPassword())) {
             return "비번틀림";
         }
-        new PrincipalDetails(user.get());
         return tokenProvider.createAccessToken(this.username);
     }
 }

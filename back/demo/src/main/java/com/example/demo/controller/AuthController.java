@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.User.User;
 import com.example.demo.User.UserRepository;
 import com.example.demo.auth.JwtTokenProvider;
+import com.example.demo.auth.PrincipalDetails;
 import com.example.demo.payload.JoinRequestDto;
 import com.example.demo.payload.LoginRequestDto;
 import lombok.RequiredArgsConstructor;
