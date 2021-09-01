@@ -1,13 +1,12 @@
-package com.example.websocketpractice;
+package com.example.practicewebsocket;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WebsocketPracticeApplication {
+public class PracticeWebsocketApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(WebsocketPracticeApplication.class, args);
+        SpringApplication.run(PracticeWebsocketApplication.class, args);
     }
-
 }
