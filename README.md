@@ -1,3 +1,3 @@
 # Study
 
-공부할거 : jwt, servlet, webflux(reactive), Rsocket, OAuth, cloud, session, 
+공부할거 : jwt, servlet, webflux, Rsocket, OAuth, cloud, session, sse, redis, 
