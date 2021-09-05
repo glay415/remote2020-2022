@@ -7,7 +7,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photogram</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
+
 
 <body>
 <div class="container">
@@ -18,8 +22,10 @@
             <article class="login__form__container">
                 <!--로그인 폼-->
                 <div class="login__form">
+                    <div class="login__form">
+                        <h1><img src="/images/logo.jpg" alt=""></h1>
                     <!--로그인 인풋-->
-                    <form class="login__input" >
+                    <form class="login__input" action="/auth/login" method="post">
                         <input type="text" name="username" placeholder="유저네임" required="required" />
                         <input type="password" name="password" placeholder="비밀번호" required="required" />
                         <button>로그인</button>
