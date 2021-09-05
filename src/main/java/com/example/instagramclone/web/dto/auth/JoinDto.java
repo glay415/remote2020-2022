@@ -1,6 +1,5 @@
 package com.example.instagramclone.web.dto.auth;
 
-import com.example.instagramclone.domain.user.User;
 import lombok.Data;
 
 @Data
