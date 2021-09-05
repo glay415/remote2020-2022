@@ -1,6 +1,7 @@
 package com.example.instagramclone.web;
 
 import com.example.instagramclone.domain.user.User;
+import com.example.instagramclone.handler.ex.CustomValidationException;
 import com.example.instagramclone.service.AuthService;
 import com.example.instagramclone.web.dto.auth.JoinDto;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +28,7 @@ public class AuthController {
     }
 
     @PostMapping("/auth/join")
-    public @ResponseBody String join(@Valid JoinDto joinDto, BindingResult bindingResult){
+    public String join(@Valid JoinDto joinDto, BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){
             Map<String, String> errorMap = new HashMap<>();
@@ -35,7 +36,7 @@ public class AuthController {
             for(FieldError error: bindingResult.getFieldErrors()) {
                 errorMap.put(error.getField(), error.getDefaultMessage());
             }
-            return "error";
+            throw new CustomValidationException("유효성 검사 실패함", errorMap);
         } else {
             User userEntity = authService.join(joinDto);
             System.out.println(userEntity);
