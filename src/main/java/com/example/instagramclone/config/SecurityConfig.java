@@ -18,14 +18,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
+        http.csrf().disable();
         http.authorizeRequests()
+                .antMatchers("/","/user/**","/image/**","/subscribe/**","/comment/**").authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/auth/login")
+                .loginPage("/auth/login") //get
+                .loginProcessingUrl("/auth/login") //post
                 .defaultSuccessUrl("/");
-        http
-                .csrf().disable();
     }
 }
