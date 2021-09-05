@@ -10,12 +10,4 @@ public class JoinDto {
     private String email;
     private String name;
 
-    public User toEntity(){
-        return User.builder()
-                .username(username)
-                .password(password)
-                .email(email)
-                .name(name)
-                .build();
-    }
 }
