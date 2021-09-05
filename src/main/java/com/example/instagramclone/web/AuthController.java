@@ -5,8 +5,15 @@ import com.example.instagramclone.service.AuthService;
 import com.example.instagramclone.web.dto.auth.JoinDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @Controller
@@ -20,10 +27,20 @@ public class AuthController {
     }
 
     @PostMapping("/auth/join")
-    public String join(JoinDto joinDto){
-        User userEntity = authService.join(joinDto);
-        System.out.println(userEntity);
-        return "auth/Login";
+    public @ResponseBody String join(@Valid JoinDto joinDto, BindingResult bindingResult){
+
+        if(bindingResult.hasErrors()){
+            Map<String, String> errorMap = new HashMap<>();
+
+            for(FieldError error: bindingResult.getFieldErrors()) {
+                errorMap.put(error.getField(), error.getDefaultMessage());
+            }
+            return "error";
+        } else {
+            User userEntity = authService.join(joinDto);
+            System.out.println(userEntity);
+            return "auth/Login";
+        }
     }
 
     @GetMapping("/auth/login")
