@@ -18,10 +18,9 @@ public class AuthService {
 
     @Transactional
     public User join(JoinDto joinDto) {
-        String encPassword = bCryptPasswordEncoder.encode(joinDto.getPassword());
         User user = User.builder()
                 .username(joinDto.getUsername())
-                .password(encPassword)
+                .password(bCryptPasswordEncoder.encode(joinDto.getPassword()))
                 .email(joinDto.getEmail())
                 .name(joinDto.getName())
                 .role("ROLE_USER")
