@@ -31,5 +31,5 @@ spring:
       enabled: true
       max-file-size: 2MB
 
-    file:
-      path: C:/workspace/springbootwork/upload/
+file:
+  path: C:/workspace/springbootwork/upload/
