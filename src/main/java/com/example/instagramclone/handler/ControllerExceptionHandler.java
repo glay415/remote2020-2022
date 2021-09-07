@@ -1,5 +1,6 @@
 package com.example.instagramclone.handler;
 
+import com.example.instagramclone.handler.ex.CustomApiException;
 import com.example.instagramclone.handler.ex.CustomValidationApiException;
 import com.example.instagramclone.handler.ex.CustomValidationException;
 import com.example.instagramclone.utill.Script;
@@ -24,4 +25,8 @@ public class ControllerExceptionHandler {
         return new ResponseEntity<>(new CMRespDto<>(-1, e.getMessage(), e.getErrorMap()), HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(CustomApiException.class)
+    public ResponseEntity<?> apiException(CustomApiException e) {
+        return new ResponseEntity<>(new CMRespDto<>(-1, e.getMessage(),null), HttpStatus.BAD_REQUEST);
+    }
 }
