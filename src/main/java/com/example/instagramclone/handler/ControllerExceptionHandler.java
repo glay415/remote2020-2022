@@ -1,6 +1,7 @@
 package com.example.instagramclone.handler;
 
 import com.example.instagramclone.handler.ex.CustomApiException;
+import com.example.instagramclone.handler.ex.CustomException;
 import com.example.instagramclone.handler.ex.CustomValidationApiException;
 import com.example.instagramclone.handler.ex.CustomValidationException;
 import com.example.instagramclone.utill.Script;
@@ -24,7 +25,11 @@ public class ControllerExceptionHandler {
             return Script.back(e.getErrorMap().toString());
         }
 
+    }
 
+    @ExceptionHandler(CustomException.class)
+    public String exception(CustomException e) {
+        return Script.back(e.getMessage());
     }
 
     @ExceptionHandler(CustomValidationApiException.class)
