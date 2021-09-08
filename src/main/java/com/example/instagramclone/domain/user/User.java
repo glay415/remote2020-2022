@@ -1,9 +1,11 @@
 package com.example.instagramclone.domain.user;
 
+import com.example.instagramclone.domain.image.Image;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Builder
 @NoArgsConstructor
@@ -34,6 +36,9 @@ public class User {
 
     private String profileImageUrl;
     private String role;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Image> images;
 
     private LocalDateTime createDate;
 
