@@ -18,11 +18,12 @@ public class UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Transactional(readOnly = true)
     public User userProfile(int userId) {
         User user = userRepository.findById(userId).orElseThrow(()-> {
             throw new CustomException("해당 프로필 페이지는 없는 페이지입니다.");
         });
-        user.getImages().get(0);
+
         return user;
     }
 
