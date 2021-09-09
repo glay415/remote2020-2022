@@ -34,5 +34,11 @@ public class Image {
     private void createDate(){
         this.createDate = LocalDateTime.now();
     }
-
+//
+//    @Override
+//    public String toString() {
+//        return "Image [id" + id + ", caption + ",
+//                postImageUrl=" + postImageUrl + ",
+//                createDate = " + createDate + "]";
+//    }
 }
