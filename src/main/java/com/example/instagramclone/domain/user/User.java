@@ -1,6 +1,7 @@
 package com.example.instagramclone.domain.user;
 
 import com.example.instagramclone.domain.image.Image;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -38,6 +39,7 @@ public class User {
     private String role;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"user"})
     private List<Image> images;
 
     private LocalDateTime createDate;
