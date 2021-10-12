@@ -1,5 +1,6 @@
 package com.example.instagramclone.service;
 
+import com.example.instagramclone.domain.subscribe.SubscribeRepository;
 import com.example.instagramclone.domain.user.User;
 import com.example.instagramclone.domain.user.UserRepository;
 import com.example.instagramclone.handler.ex.CustomException;
@@ -11,12 +12,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.function.Supplier;
-
 @RequiredArgsConstructor
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final SubscribeRepository subscribeRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Transactional(readOnly = true)
@@ -30,6 +30,12 @@ public class UserService {
         dto.setUser(user);
         dto.setPageOwnerState(pageUserId == principalId);
         dto.setImageCount(user.getImages().size());
+
+        int subscribeState = subscribeRepository.mSubscribeState(principalId, pageUserId);
+        int subscribeCount = subscribeRepository.mSubscribeCount(pageUserId);
+
+        dto.setSubscribeState(subscribeState == 1);
+        dto.setSubscribeCount(subscribeCount);
 
         return dto;
     }
