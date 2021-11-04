@@ -15,8 +15,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Rollback(value = false)
 public class MemberRepositoryTest {
 
-    @Autowired
-    MemberRepository memberRepository;
+    @Autowired MemberRepository memberRepository;
+
+    @Test
+    public void memberRepository() {
+        System.out.println("memberRepository = " + memberRepository.getClass());
+        //class com.sun.proxy.$Proxy98
+    }
 
     @Test
     public void testMember() {
