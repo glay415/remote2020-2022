@@ -12,6 +12,7 @@ import javax.transaction.Transactional;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -142,5 +143,22 @@ public class MemberRepositoryTest {
         for (Member member : result) {
             System.out.println("member = " + member);
         }
+    }
+
+    @Test
+    public void returnType() {
+        Member m1 = new Member("AAA", 10);
+        Member m2 = new Member("AAA", 20);
+        Member m3 = new Member("BBB", 30);
+        memberRepository.save(m1);
+        memberRepository.save(m2);
+        memberRepository.save(m3);
+
+        List<Member> aaa = memberRepository.findListByUsername("AAA"); //if null = Collection.empty
+        Member bbb = memberRepository.findMemberByUsername("BBB"); //if null = null, if notSingle = NonUniqueResultException
+        Optional<Member> ccc = memberRepository.findOptionalByUsername("BBB"); //if null = Optional.empty
+
+        System.out.println("findMember" + aaa + bbb + ccc);
+        //more type -> https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repository-query-return-types
     }
 }
