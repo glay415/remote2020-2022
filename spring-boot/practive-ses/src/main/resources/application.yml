@@ -1,0 +1,9 @@
+cloud:
+  aws:
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+aws:
+  secret: ${ACCESS}
+  access: ${SECRET}
