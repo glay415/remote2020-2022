@@ -3,24 +3,17 @@ package authentication.practiveemail.controller;
 import authentication.practiveemail.dto.SendEmailRequest;
 import authentication.practiveemail.service.EmailSenderService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/email")
 public class EmailController {
 
     private final EmailSenderService emailSenderService;
 
-    @PostMapping("/test")
+    @PostMapping("/send")
     public String sendTest(@RequestBody SendEmailRequest sendEmailRequest) {
         return emailSenderService.send(sendEmailRequest);
-    }
-
-    @GetMapping("/get")
-    public String rand() {
-        return emailSenderService.randomCode();
     }
 }
