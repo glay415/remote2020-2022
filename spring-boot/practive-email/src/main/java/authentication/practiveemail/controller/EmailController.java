@@ -17,11 +17,13 @@ public class EmailController {
 
     @PostMapping("/send")
     public String sendTest(@RequestBody SendEmailRequest sendEmailRequest) {
-        return emailSenderService.send(sendEmailRequest);
+        emailSenderService.send(sendEmailRequest);
+        return "send success";
     }
 
     @PostMapping("/receive")
     public String receiveTest(@RequestBody ReceiveEmailRequest receiveEmailRequest) {
-        return emailReceiverService.receive(receiveEmailRequest);
+        emailReceiverService.receive(receiveEmailRequest);
+        return "receive success";
     }
 }

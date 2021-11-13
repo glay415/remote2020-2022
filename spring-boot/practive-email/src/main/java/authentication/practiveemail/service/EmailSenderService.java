@@ -18,7 +18,7 @@ public class EmailSenderService {
     private final AuthCodeRepository authCodeRepository;
 
     @Async
-    public String send(SendEmailRequest sendEmailRequest) {
+    public void send(SendEmailRequest sendEmailRequest) {
 
         String authCode = randomCode();
 
@@ -33,8 +33,6 @@ public class EmailSenderService {
                 .email(sendEmailRequest.getEmail())
                 .authCode(authCode)
                 .build());
-
-        return "success";
     }
 
     public String randomCode() {
