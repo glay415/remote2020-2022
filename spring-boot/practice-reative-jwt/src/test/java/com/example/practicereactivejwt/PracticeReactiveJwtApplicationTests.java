@@ -1,10 +1,10 @@
-package com.example.practicereativejwt;
+package com.example.practicereactivejwt;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PracticeReativeJwtApplicationTests {
+class PracticeReactiveJwtApplicationTests {
 
     @Test
     void contextLoads() {
