@@ -1,6 +1,7 @@
 package com.example.appjambackend.domain.comment.entity;
 
 import com.example.appjambackend.domain.feed.entity.Feed;
+import com.example.appjambackend.global.entity.BaseTimeEntity;
 import lombok.*;
 
 
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Comment {
+public class Comment extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -19,7 +19,7 @@ public class PostCommentService {
         commentRepository.save(
                 Comment.builder()
                         .content(content)
-                        .nickname(userFacade.getCurrentStudent().getNickname())
+                        .nickname(userFacade.getCurrentUser().getNickname())
                         .feed(feedFacade.getFeedId(feedId))
                         .build()
         );
