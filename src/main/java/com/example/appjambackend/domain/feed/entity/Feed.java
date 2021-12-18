@@ -1,6 +1,7 @@
 package com.example.appjambackend.domain.feed.entity;
 
 import com.example.appjambackend.domain.comment.entity.Comment;
+import com.example.appjambackend.domain.image.entity.Image;
 import com.example.appjambackend.domain.user.entity.User;
 import com.example.appjambackend.global.entity.BaseTimeEntity;
 import lombok.AccessLevel;
@@ -29,10 +30,17 @@ public class Feed extends BaseTimeEntity {
     @OneToMany(mappedBy = "feed", cascade = CascadeType.REMOVE)
     private List<Comment> comments;
 
+    @OneToMany(mappedBy = "feed", cascade = CascadeType.REMOVE)
+    private List<Image> images;
+
     @Builder
     public Feed(String title, String description, User user) {
         this.title = title;
         this.description = description;
+    }
+
+    public void UploadImage(List<Image> images) {
+        this.images = images;
     }
 
     public Feed changeTitle(String title) {
