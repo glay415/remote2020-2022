@@ -19,9 +19,9 @@ public class SignUpService {
         signUpRequest.encodePassword(
                 passwordEncoder.encode(signUpRequest.getPassword())
         );
-
         userRepository.save(
             new User(signUpRequest)
         );
+
     }
 }
