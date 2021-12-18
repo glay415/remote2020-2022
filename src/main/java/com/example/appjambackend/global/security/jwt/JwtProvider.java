@@ -11,9 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
-import reactor.util.annotation.Nullable;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -25,6 +23,23 @@ public class JwtProvider {
     private final JwtProperties jwtProperties;
     private final RefreshTokenRepository refreshTokenRepository;
     private final CustomUserDetailsService userDetailsService;
+
+    public TokenResponse reissue(String refreshToken) {
+        return refreshTokenRepository.findByRefreshToken(refreshToken)
+                .filter(token -> isRefresh(token.getRefreshToken()))
+                .map(token -> {
+                    String id = token.getUserid();
+                    return new TokenResponse(
+                            generateAccess(id),
+                            token.reissue(generateRefresh(id), jwtProperties.getRefreshExp())
+                    );
+                })
+                .orElseThrow(()-> InvalidTokenException.EXCEPTION);
+    }
+
+    public boolean isRefresh(String token) {
+        return getBody(token).get("type").equals("refresh");
+    }
 
     public TokenResponse generateToken(String username) {
         String access = generateAccess(username);
