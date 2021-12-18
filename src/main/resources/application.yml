@@ -7,9 +7,9 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
 
   datasource:
-    url: ${DB_URL:jdbc:mysql://localhost:3306/appjam?serverTimezone=UTC&characterEncoding=UTF-8}
+    url: ${DB_URL:appjam.clttkmmlpmay.ap-northeast-2.rds.amazonaws.com}
     username: ${DB_USER:cos}
-    password: ${DB_PWD:cos1234}
+    password: ${DB_PWD:cos12345678}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   redis:
