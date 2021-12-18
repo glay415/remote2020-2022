@@ -8,6 +8,7 @@ import com.example.appjambackend.domain.feed.exceptoin.FeedNotFoundException;
 import com.example.appjambackend.domain.feed.facade.FeedFacade;
 import com.example.appjambackend.domain.feed.presentation.dto.requset.ModifyFeedRequest;
 import com.example.appjambackend.domain.feed.presentation.dto.requset.PostFeedRequest;
+import com.example.appjambackend.domain.feed.presentation.dto.response.PostFeedResponse;
 import com.example.appjambackend.domain.user.entity.UserRepository;
 import com.example.appjambackend.global.security.exception.FileEmptyException;
 import com.example.appjambackend.global.security.exception.TooManyFilesException;
@@ -31,7 +32,7 @@ public class FeedServiceImpl implements FeedService{
     private final FeedFacade feedFacade;
 
     @Override
-    public void postFeed(PostFeedRequest request) {
+    public PostFeedResponse postFeed(PostFeedRequest request) {
 
         Feed feed = feedRepository.save(
                         Feed.builder()
@@ -39,6 +40,7 @@ public class FeedServiceImpl implements FeedService{
                                 .description(request.getDescription())
                                 .build()
         );
+        return null;
     }
 
     @Override
