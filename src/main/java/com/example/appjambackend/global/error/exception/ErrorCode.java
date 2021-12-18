@@ -14,6 +14,8 @@ public enum ErrorCode {
 
     FEED_NOT_FOUND_EXCEPTION(404, "feed Not Found"),
 
+    IMAGE_NOT_FOUND(404, "Image Not Found"),
+
     FILE_UPLOAD_FAIL(400,"File Upload Fail"),
     FILE_EMPTY(400, "File is Empty"),
 

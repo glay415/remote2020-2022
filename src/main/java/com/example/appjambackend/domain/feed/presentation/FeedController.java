@@ -8,8 +8,10 @@ import com.example.appjambackend.domain.feed.service.RemoveFeedService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/feed")
@@ -22,8 +24,9 @@ public class FeedController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void feedResponse(@RequestBody @Valid PostFeedRequest request) {
-        postFeedService.execute(request);
+    public void feedResponse(@RequestPart List<MultipartFile> images,
+                             @RequestBody @Valid PostFeedRequest request) {
+        postFeedService.execute(images, request);
     }
 
     @PatchMapping
