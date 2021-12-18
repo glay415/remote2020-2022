@@ -1,8 +1,7 @@
 package com.example.appjambackend.domain.feed.service;
 
-import com.example.appjambackend.domain.feed.presentation.requset.ModifyFeedRequest;
-import com.example.appjambackend.domain.feed.presentation.requset.PostFeedRequest;
-import net.bytebuddy.agent.builder.AgentBuilder;
+import com.example.appjambackend.domain.feed.presentation.dto.requset.ModifyFeedRequest;
+import com.example.appjambackend.domain.feed.presentation.dto.requset.PostFeedRequest;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
