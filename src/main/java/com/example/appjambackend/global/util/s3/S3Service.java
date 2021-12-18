@@ -19,29 +19,24 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class S3Service {
 
-    private final AmazonS3 amazonS3;
+//    private final AmazonS3 amazonS3;
+//
+//    @Value("${cloud.aws.s3.bucket}")
+//    private String bucket;
+//
+//    public String upload(MultipartFile image) throws IOException {
+//        String fileName = UUID.randomUUID() + "-" + image.getOriginalFilename();
+//
+//        s3Client.putObject(new PutObjectRequest(bucket, fileName, image.getInputStream(), null)
+//                .withCannedAcl(CannedAccessControlList.PublicRead));
+//        return fileName;
+//    }
+//
+//    public String delete(String imagePath) {
+//        DeleteObjectRequest deleteObjectRequest = new DeleteObjectRequest(bucket, imagePath);
+//        s3Client.deleteObject(deleteObjectRequest);
+//        return "delete success:"+deleteObjectRequest.getKey();
+//    }
 
-    @Value("${cloud.aws.s3.bucket}")
-    private String bucket;
-
-    public String upload(MultipartFile file) {
-        if (file.isEmpty() && file.getOriginalFilename() != null) throw new FileEmptyException();
-        String originalFilename = file.getOriginalFilename();
-        String ext = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
-        String randomName = UUID.randomUUID().toString();
-        String fileName = randomName + "." + ext;
-
-        try {
-            ObjectMetadata objMeta = new ObjectMetadata();
-            byte[] bytes = IOUtils.toByteArray(file.getInputStream());
-            objMeta.setContentLength(bytes.length);
-            amazonS3.putObject(new PutObjectRequest(bucket, fileName, file.getInputStream(), objMeta)
-                    .withCannedAcl(CannedAccessControlList.PublicRead));
-        } catch (IOException e) {
-            throw new FileUploadFailException();
-        }
-
-        return fileName;
-    }
 }
 
