@@ -5,6 +5,7 @@ import com.example.appjambackend.domain.user.presentation.dto.request.SignUpRequ
 import com.example.appjambackend.domain.user.presentation.dto.response.TokenResponse;
 import com.example.appjambackend.domain.user.service.SignInService;
 import com.example.appjambackend.domain.user.service.SignUpService;
+import com.example.appjambackend.domain.user.service.TokenRefreshService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,7 @@ public class UserController {
 
     private final SignUpService signUpService;
     private final SignInService signInService;
+    private final TokenRefreshService tokenRefreshService;
 
     @PostMapping("/auth")
     public void signUp(@RequestBody @Valid SignUpRequest signUpRequest) {
@@ -26,5 +28,10 @@ public class UserController {
     @PutMapping("/auth")
     public TokenResponse singIn(@RequestBody @Valid SignInRequest signInRequest) {
         return signInService.execute(signInRequest);
+    }
+
+    @PatchMapping("/auth")
+    public TokenResponse reissue(@RequestHeader("X-Refresh-Token") String refresh) {
+        return tokenRefreshService.execute(refresh);
     }
 }
