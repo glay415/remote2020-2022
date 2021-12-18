@@ -1,4 +1,4 @@
-package com.example.appjambackend.domain.feed.presentation.requset;
+package com.example.appjambackend.domain.feed.presentation.dto.requset;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

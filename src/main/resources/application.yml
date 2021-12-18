@@ -22,3 +22,16 @@ jwt:
   secretKey: ${JWT_SECRET_KEY:secret}
   accessExp: ${JWT_ACCESS_EXP:3600}
   refreshExp: ${JWT_REFRESH_EXP:3600}
+
+cloud:
+  aws:
+    credentials:
+      accessKey: ${S3_ACCESSKEY:AKIARPJSAODFWRB4BPXG}
+      secretKey: ${S3_SECRETKEY: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}
+    s3:
+      bucket: ${S3_BUCKET:appjam-s3}
+    region:
+      static: ${ap-northeast-2
+    stack:
+      auto: false
+
