@@ -3,11 +3,17 @@ package com.example.appjambackend.global.security.jwt;
 import com.example.appjambackend.domain.user.entity.refresh.RefreshToken;
 import com.example.appjambackend.domain.user.entity.refresh.RefreshTokenRepository;
 import com.example.appjambackend.domain.user.presentation.dto.response.TokenResponse;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import com.example.appjambackend.global.security.details.CustomUserDetailsService;
+import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
+import reactor.util.annotation.Nullable;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 @RequiredArgsConstructor
@@ -16,6 +22,7 @@ public class JwtProvider {
 
     private final JwtProperties jwtProperties;
     private final RefreshTokenRepository refreshTokenRepository;
+    private final CustomUserDetailsService userDetailsService;
 
     public TokenResponse generateToken(String username) {
         String access = generateAccess(username);
@@ -54,5 +61,33 @@ public class JwtProvider {
                 )
                 .setIssuedAt(new Date())
                 .compact();
+    }
+
+    public String resolveToken(HttpServletRequest request) {
+        String bearerToken = request.getHeader(jwtProperties.getHeader());
+
+        if(bearerToken != null && bearerToken.startsWith(jwtProperties.getPrefix())
+                && bearerToken.length() > 7) {
+            return bearerToken.substring(7);
+        }
+        return null;
+    }
+
+    public Authentication getAuthentication(String token) {
+        Claims body = getBody(token);
+
+        UserDetails userDetails = getDetails(body);
+        return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
+    }
+
+    private Claims getBody(String token) {
+        return Jwts.parser()
+                .setSigningKey(jwtProperties.getSecretKey())
+                .parseClaimsJws(token)
+                .getBody();
+    }
+
+    private UserDetails getDetails(Claims body) {
+        return userDetailsService.loadUserByUsername(body.getSubject());
     }
 }
