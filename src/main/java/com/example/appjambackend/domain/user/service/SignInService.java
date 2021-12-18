@@ -18,7 +18,7 @@ public class SignInService {
     private final PasswordEncoder passwordEncoder;
 
     public TokenResponse execute(SignInRequest signInRequest) {
-        return userRepository.findByUserId(signInRequest.getUserid())
+        return userRepository.findByUserid(signInRequest.getUserid())
                 .filter(user -> passwordEncoder.matches(signInRequest.getPassword(), user.getPassword()))
                 .map(User::getUserid)
                 .map(jwtProvider::generateToken)
