@@ -12,7 +12,7 @@ public class CommentController {
 
     private final PostCommentService postCommentService;
 
-    @PostMapping()
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void postComment(@RequestParam("feed-id") Long feedId,
                             @RequestParam("content") String content) {
