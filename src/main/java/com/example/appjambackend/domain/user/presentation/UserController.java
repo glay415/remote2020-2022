@@ -1,12 +1,12 @@
 package com.example.appjambackend.domain.user.presentation;
 
+import com.example.appjambackend.domain.user.presentation.dto.request.SignInRequest;
 import com.example.appjambackend.domain.user.presentation.dto.request.SignUpRequest;
+import com.example.appjambackend.domain.user.presentation.dto.response.TokenResponse;
+import com.example.appjambackend.domain.user.service.SignInService;
 import com.example.appjambackend.domain.user.service.SignUpService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -14,9 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     private final SignUpService signUpService;
+    private final SignInService signInService;
 
     @PostMapping("/auth")
     public void signUp(@RequestBody SignUpRequest signUpRequest) {
         signUpService.execute(signUpRequest);
+    }
+
+    @PutMapping("/auth")
+    public TokenResponse singIn(@RequestBody SignInRequest signInRequest) {
+        return signInService.execute(signInRequest);
     }
 }
