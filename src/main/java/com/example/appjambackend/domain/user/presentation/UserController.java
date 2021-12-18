@@ -8,6 +8,8 @@ import com.example.appjambackend.domain.user.service.SignUpService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/user")
@@ -17,12 +19,12 @@ public class UserController {
     private final SignInService signInService;
 
     @PostMapping("/auth")
-    public void signUp(@RequestBody SignUpRequest signUpRequest) {
+    public void signUp(@RequestBody @Valid SignUpRequest signUpRequest) {
         signUpService.execute(signUpRequest);
     }
 
     @PutMapping("/auth")
-    public TokenResponse singIn(@RequestBody SignInRequest signInRequest) {
+    public TokenResponse singIn(@RequestBody @Valid SignInRequest signInRequest) {
         return signInService.execute(signInRequest);
     }
 }
