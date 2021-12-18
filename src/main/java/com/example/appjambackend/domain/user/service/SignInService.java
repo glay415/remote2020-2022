@@ -2,6 +2,7 @@ package com.example.appjambackend.domain.user.service;
 
 import com.example.appjambackend.domain.user.entity.User;
 import com.example.appjambackend.domain.user.entity.UserRepository;
+import com.example.appjambackend.domain.user.exception.UserNotFoundException;
 import com.example.appjambackend.domain.user.presentation.dto.request.SignInRequest;
 import com.example.appjambackend.domain.user.presentation.dto.response.TokenResponse;
 import com.example.appjambackend.global.security.jwt.JwtProvider;
@@ -22,6 +23,6 @@ public class SignInService {
                 .filter(user -> passwordEncoder.matches(signInRequest.getPassword(), user.getPassword()))
                 .map(User::getUserid)
                 .map(jwtProvider::generateToken)
-                .orElseThrow();
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
     }
 }

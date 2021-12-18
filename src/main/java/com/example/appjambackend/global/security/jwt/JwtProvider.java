@@ -4,6 +4,8 @@ import com.example.appjambackend.domain.user.entity.refresh.RefreshToken;
 import com.example.appjambackend.domain.user.entity.refresh.RefreshTokenRepository;
 import com.example.appjambackend.domain.user.presentation.dto.response.TokenResponse;
 import com.example.appjambackend.global.security.details.CustomUserDetailsService;
+import com.example.appjambackend.global.security.exception.ExpiredTokenException;
+import com.example.appjambackend.global.security.exception.InvalidTokenException;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -76,15 +78,25 @@ public class JwtProvider {
     public Authentication getAuthentication(String token) {
         Claims body = getBody(token);
 
+        if(body.getExpiration().before(new Date())) {
+            throw ExpiredTokenException.EXCEPTION;
+        }
+
         UserDetails userDetails = getDetails(body);
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 
     private Claims getBody(String token) {
-        return Jwts.parser()
-                .setSigningKey(jwtProperties.getSecretKey())
-                .parseClaimsJws(token)
-                .getBody();
+        try {
+            return Jwts.parser()
+                    .setSigningKey(jwtProperties.getSecretKey())
+                    .parseClaimsJws(token)
+                    .getBody();
+        } catch (ExpiredJwtException e) {
+            throw ExpiredTokenException.EXCEPTION;
+        } catch (MalformedJwtException | SignatureException e) {
+            throw InvalidTokenException.EXCEPTION;
+        }
     }
 
     private UserDetails getDetails(Claims body) {
