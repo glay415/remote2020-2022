@@ -1,5 +1,6 @@
 package com.example.appjambackend.domain.user.entity;
 
+import com.example.appjambackend.domain.user.presentation.dto.request.SignUpRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,13 +15,19 @@ public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id", unique = true)
-    private String userId;
+    @Column(name = "userid", unique = true)
+    private String userid;
 
     @Column(name = "password")
     private String password;
 
-    @Column(name = "nick_name")
-    private String nickName;
+    @Column(name = "nickname")
+    private String nickname;
+
+    public User(SignUpRequest signUpRequest) {
+        this.nickname = signUpRequest.getNickname();
+        this.userid = signUpRequest.getUserid();
+        this.password = signUpRequest.getPassword();
+    }
 
 }
