@@ -5,7 +5,7 @@ import com.example.appjambackend.global.error.exception.ErrorCode;
 
 public class FileUploadFailException extends CustomExceptoin {
 
-    public static FileUploadFailException EXCEPTION =
+    public static CustomExceptoin EXCEPTION =
             new FileUploadFailException();
 
     public FileUploadFailException() {
