@@ -5,7 +5,7 @@ import com.example.appjambackend.global.error.exception.ErrorCode;
 
 public class FeedNotFoundException extends CustomExceptoin {
 
-    public static CustomExceptoin EXCEPTOIN =
+    public static CustomExceptoin EXCEPTION =
             new FeedNotFoundException();
 
     private FeedNotFoundException() {
