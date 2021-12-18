@@ -8,7 +8,7 @@ public class FileEmptyException extends CustomExceptoin {
     private static  FileEmptyException EXCEPTONI=
             new FileEmptyException();
 
-    public FileEmptyException() {
+    private FileEmptyException() {
         super(ErrorCode.FILE_EMPTY);
     }
 }
