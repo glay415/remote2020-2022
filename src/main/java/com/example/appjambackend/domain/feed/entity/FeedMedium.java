@@ -18,15 +18,15 @@ public class FeedMedium {
     private Long id;
 
     @Column(length = 150)
-    private String file;
+    private String fileName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "feed_id")
     private Feed feed;
 
     @Builder
-    public FeedMedium(String file, Feed feed) {
-        this.file = file;
+    public FeedMedium(String fileName, Feed feed) {
+        this.fileName = fileName;
         this.feed = feed;
 
     }
