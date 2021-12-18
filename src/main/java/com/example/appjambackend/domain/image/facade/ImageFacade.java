@@ -12,6 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toList;
+
 @Component
 @RequiredArgsConstructor
 public class ImageFacade {
@@ -29,8 +31,24 @@ public class ImageFacade {
                                 .imagePath(imagePath)
                                 .imageUrl(s3Service.getFileUrl(imagePath))
                                 .build()))
-                        .collect(Collectors.toList())
+                        .collect(toList())
         );
     }
 
+    public void modifyImages(Feed feed, List<MultipartFile> images) {
+
+        removeImages(feed);
+        imageUpload(images, feed);
+
+    }
+
+    public void removeImages(Feed feed) {
+        imageRepository.deleteByFeed(feed);
+    }
+
+    public List<String> getFeedImages(Feed feed) {
+        return feed.getImages().stream()
+                .map(Image::getImageUrl)
+                .collect(toList());
+    }
 }
