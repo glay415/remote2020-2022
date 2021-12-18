@@ -5,10 +5,10 @@ import com.example.appjambackend.global.error.exception.ErrorCode;
 
 public class FileEmptyException extends CustomExceptoin {
 
-    private static  CustomExceptoin EXCEPTONI=
+    public static  CustomExceptoin EXCEPTONI=
             new FileEmptyException();
 
-    private FileEmptyException() {
+    public FileEmptyException() {
         super(ErrorCode.FILE_EMPTY);
     }
 }
