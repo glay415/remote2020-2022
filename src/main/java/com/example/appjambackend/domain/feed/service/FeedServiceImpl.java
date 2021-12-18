@@ -55,6 +55,11 @@ public class FeedServiceImpl implements FeedService{
     @Override
     public void removeFeed(Long id) {
 
+        feedRepository.findById(id)
+                .orElseThrow(() -> FeedNotFoundException.EXCEPTION);
+
+        feedRepository.deleteById(id);
+
     }
 
     @Override
