@@ -12,7 +12,12 @@ public enum ErrorCode {
 
     USER_NOT_FOUND(404, "User Not Found"),
 
-    FEED_NOT_FOUND_EXCEPTION(404, "feed Not Found")
+    FEED_NOT_FOUND_EXCEPTION(404, "feed Not Found"),
+
+    FILE_UPLOAD_FAIL(400,"File Upload Fail"),
+    FILE_EMPTY(400, "File is Empty"),
+
+    TOO_MANY_FILES(413,"TOO Many Files"),
     ;
 
     private final int statusCode;
