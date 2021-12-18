@@ -30,4 +30,13 @@ public class Feed extends BaseTimeEntity {
         this.description = description;
     }
 
+    public Feed changeTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public Feed changeDescription(String description) {
+        this.description = description;
+        return this;
+    }
 }
