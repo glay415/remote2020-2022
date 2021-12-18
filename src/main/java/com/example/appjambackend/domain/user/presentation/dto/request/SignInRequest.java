@@ -5,15 +5,10 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class SignUpRequest {
+public class SignInRequest {
 
     private String userid;
 
     private String password;
 
-    private String nickname;
-
-    public void encodePassword(String password) {
-        this.password = password;
-    }
 }
