@@ -21,11 +21,8 @@ public class S3Service {
 
     private final AmazonS3 amazonS3;
 
-    @Value("${aws.s3.bucket}")
+    @Value("${aws.cloud.s3.bucket}")
     private String bucket;
-
-    @Value("${aws.s3.base_image_url}")
-    private String baseUrl;
 
     public String upload(MultipartFile file) {
         if (file.isEmpty() && file.getOriginalFilename() != null) throw new FileEmptyException();
@@ -44,7 +41,7 @@ public class S3Service {
             throw new FileUploadFailException();
         }
 
-        return baseUrl + "/" + fileName;
+        return fileName;
     }
 }
 
