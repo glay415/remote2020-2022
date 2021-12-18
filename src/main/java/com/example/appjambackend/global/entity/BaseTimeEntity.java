@@ -18,5 +18,5 @@ public class BaseTimeEntity {
 
     @CreatedDate
     private LocalDateTime updateDateTime;
-    
+
 }
