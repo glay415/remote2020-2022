@@ -25,13 +25,15 @@ jwt:
 
 cloud:
   aws:
-    credentials:
-      accessKey: ${S3_ACCESSKEY:AKIARPJSAODFWRB4BPXG}
-      secretKey: ${S3_SECRETKEY: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}
     s3:
-      bucket: ${S3_BUCKET:appjam-s3}
+      bucket: ${BUCKET_NAM:appjam-s3}
     region:
-      static: ${ap-northeast-2
+      static: ap-northeast-2
     stack:
       auto: false
+    credentials:
+      instanceProfile: true
 
+  credentials:
+    access-key: ${ACCESS_KEY:AKIARPJSAODF5AKQSEXR}
+    secret-key: ${SECRET_KEY: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}
