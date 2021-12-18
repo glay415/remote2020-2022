@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  database:
+    image: mysql:5.7
+    environment:
+      MYSQL_USER: cos
+      MYSQL_DATABASE: appjam
+      MYSQL_PASSWORD: cos1234
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+      - "./database/spring_social/:/var/lib/mysql"
+    ports:
+      - "3306:3306"
+    container_name: custom_mysql
+    networks:
+      - backend-network
