@@ -6,5 +6,5 @@ public interface FeedMediumRepository extends JpaRepository<FeedMedium, Long> {
 
     FeedMedium findFeedMediumByFeed(Feed feed);
 
-    int countByFeed(Feed feed);
+    int countByFeed(Long feedId);
 }

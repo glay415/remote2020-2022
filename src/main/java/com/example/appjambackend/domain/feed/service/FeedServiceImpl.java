@@ -66,7 +66,7 @@ public class FeedServiceImpl implements FeedService{
         if(files == null)
             throw new FileEmptyException();
 
-        if(files.size() + feedMediumRepository.countByFeed(feed) > MAX_FILE_COUNT)
+        if(files.size() + feedMediumRepository.countByFeed(feedId) > MAX_FILE_COUNT)
             throw new TooManyFilesException();
 
 
