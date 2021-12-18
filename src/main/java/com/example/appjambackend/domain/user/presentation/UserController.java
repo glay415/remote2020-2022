@@ -2,7 +2,9 @@ package com.example.appjambackend.domain.user.presentation;
 
 import com.example.appjambackend.domain.user.presentation.dto.request.SignInRequest;
 import com.example.appjambackend.domain.user.presentation.dto.request.SignUpRequest;
+import com.example.appjambackend.domain.user.presentation.dto.response.MyPageResponse;
 import com.example.appjambackend.domain.user.presentation.dto.response.TokenResponse;
+import com.example.appjambackend.domain.user.service.MyPageService;
 import com.example.appjambackend.domain.user.service.SignInService;
 import com.example.appjambackend.domain.user.service.SignUpService;
 import com.example.appjambackend.domain.user.service.TokenRefreshService;
@@ -17,6 +19,7 @@ import javax.validation.Valid;
 @RequestMapping("/user")
 public class UserController {
 
+    private final MyPageService myPageService;
     private final SignUpService signUpService;
     private final SignInService signInService;
     private final TokenRefreshService tokenRefreshService;
@@ -35,5 +38,10 @@ public class UserController {
     @PatchMapping("/auth")
     public TokenResponse reissue(@RequestHeader("X-Refresh-Token") String refresh) {
         return tokenRefreshService.execute(refresh);
+    }
+
+    @GetMapping
+    public MyPageResponse myPage() {
+        return myPageService.execute();
     }
 }
