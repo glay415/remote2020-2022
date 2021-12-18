@@ -13,7 +13,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(CustomExceptoin.class)
     public ResponseEntity<ErrorResponse> handlingCustomException(CustomExceptoin e) {
         ErrorCode errorCode = e.getErrorCode();
-        return new ResponseEntity<>(new ErrorResponse(errorCode.getStatusCode(), errorCode.getMessage()),
-                HttpStatus.valueOf(errorCode.getStatusCode()));
+        return new ResponseEntity<>(
+                new ErrorResponse(errorCode.getMessage()), HttpStatus.valueOf(errorCode.getStatusCode())
+        );
     }
 }
