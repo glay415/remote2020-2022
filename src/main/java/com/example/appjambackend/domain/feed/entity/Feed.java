@@ -1,5 +1,6 @@
 package com.example.appjambackend.domain.feed.entity;
 
+import com.example.appjambackend.domain.comment.entity.Comment;
 import com.example.appjambackend.domain.user.entity.User;
 import com.example.appjambackend.global.entity.BaseTimeEntity;
 import lombok.AccessLevel;
@@ -8,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -23,6 +25,9 @@ public class Feed extends BaseTimeEntity {
 
     @Column(length = 1000)
     private String description;
+
+    @OneToMany(mappedBy = "feed", cascade = CascadeType.REMOVE)
+    private List<Comment> comments;
 
     @Builder
     public Feed(String title, String description, User user) {
