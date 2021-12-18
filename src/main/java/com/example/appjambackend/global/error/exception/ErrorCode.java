@@ -18,8 +18,7 @@ public enum ErrorCode {
     FILE_EMPTY(400, "File is Empty"),
 
     TOO_MANY_FILES(413,"TOO Many Files"),
-    USERID_ALREADY_EXISTS(409, "Userid Already Exists"),
-    FEED_NOT_FOUND_EXCEPTION(404, "feed Not Found")
+    USERID_ALREADY_EXISTS(409, "Userid Already Exists")
     ;
 
     private final int statusCode;

@@ -7,6 +7,7 @@ import com.example.appjambackend.domain.user.service.SignInService;
 import com.example.appjambackend.domain.user.service.SignUpService;
 import com.example.appjambackend.domain.user.service.TokenRefreshService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -21,6 +22,7 @@ public class UserController {
     private final TokenRefreshService tokenRefreshService;
 
     @PostMapping("/auth")
+    @ResponseStatus(HttpStatus.CREATED)
     public void signUp(@RequestBody @Valid SignUpRequest signUpRequest) {
         signUpService.execute(signUpRequest);
     }
