@@ -14,7 +14,7 @@ public class PostFeedService {
     private final FeedRepository feedRepository;
 
 
-    public PostFeedResponse postFeed(PostFeedRequest request) {
+    public void execute(PostFeedRequest request) {
 
         Feed feed = feedRepository.save(
                 Feed.builder()
@@ -22,7 +22,7 @@ public class PostFeedService {
                         .description(request.getDescription())
                         .build()
         );
-        return null;
+
     }
 
 }

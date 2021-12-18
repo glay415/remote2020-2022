@@ -2,17 +2,14 @@ package com.example.appjambackend.domain.feed.presentation;
 
 import com.example.appjambackend.domain.feed.presentation.dto.requset.ModifyFeedRequest;
 import com.example.appjambackend.domain.feed.presentation.dto.requset.PostFeedRequest;
-import com.example.appjambackend.domain.feed.presentation.dto.response.PostFeedResponse;
 import com.example.appjambackend.domain.feed.service.ModifyFeedService;
 import com.example.appjambackend.domain.feed.service.PostFeedService;
 import com.example.appjambackend.domain.feed.service.RemoveFeedService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping("/feed")
@@ -25,20 +22,20 @@ public class FeedController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public PostFeedResponse feedResponse(@RequestBody @Valid PostFeedRequest request) {
-        return postFeedService.postFeed(request);
+    public void feedResponse(@RequestBody @Valid PostFeedRequest request) {
+        postFeedService.execute(request);
     }
 
     @PatchMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void modifyCarrotFeed(@RequestBody @Valid ModifyFeedRequest request) {
-        modifyFeedService.modifyFeed(request);
+        modifyFeedService.execute(request);
     }
 
     @DeleteMapping("/{feed_id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removeFeed(@PathVariable(name = "feed_id") Long feedId) {
-        removeFeedService.removeFeed(feedId);
+        removeFeedService.execute(feedId);
     }
 
 }

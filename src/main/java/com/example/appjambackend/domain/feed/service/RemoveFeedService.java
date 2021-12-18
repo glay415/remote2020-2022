@@ -11,7 +11,7 @@ public class RemoveFeedService {
 
     private final FeedRepository feedRepository;
 
-    public void removeFeed(Long id) {
+    public void execute(Long id) {
 
         feedRepository.findById(id)
                 .orElseThrow(() -> FeedNotFoundException.EXCEPTION);

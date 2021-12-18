@@ -12,7 +12,7 @@ public class ModifyFeedService {
 
     private final FeedFacade feedFacade;
 
-    public void modifyFeed(ModifyFeedRequest request) {
+    public void execute(ModifyFeedRequest request) {
 
         Feed feed = feedFacade.getFeedId(request.getFeedId());
 
