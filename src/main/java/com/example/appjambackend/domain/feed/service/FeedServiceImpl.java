@@ -7,6 +7,9 @@ import com.example.appjambackend.domain.feed.presentation.requset.ModifyFeedRequ
 import com.example.appjambackend.domain.feed.presentation.requset.PostFeedRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -39,6 +42,11 @@ public class FeedServiceImpl implements FeedService{
 
     @Override
     public void removeFeed(Long id) {
+
+    }
+
+    @Override
+    public void uploadPhoto(List<MultipartFile> files, Long feedId) {
 
     }
 }
