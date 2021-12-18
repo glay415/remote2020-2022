@@ -7,7 +7,12 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum ErrorCode {
 
-    FEED_NOT_FOUND_EXCEPTION(404, "feed Not Found"),
+    INVALID_TOKEN(401, "Invalid Token"),
+    EXPIRED_TOKEN(401, "Expired Token"),
+
+    USER_NOT_FOUND(404, "User Not Found"),
+
+    FEED_NOT_FOUND_EXCEPTION(404, "feed Not Found")
     ;
 
     private final int statusCode;
