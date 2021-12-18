@@ -20,7 +20,7 @@ public class UserFacade {
             throw UseridAlreadyExistException.EXCEPTION;
     }
 
-    public User getCurrentStudent() {
+    public User getCurrentUser() {
         Object principal = userUtil.getPrincipal();
 
         return ((CustomUserDetails) principal).getUser();
