@@ -33,6 +33,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 
     runtimeOnly 'mysql:mysql-connector-java'
+    implementation 'com.amazonaws:aws-java-sdk-s3control:1.12.52'
 
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 }
