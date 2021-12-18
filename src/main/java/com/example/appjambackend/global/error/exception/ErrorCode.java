@@ -12,6 +12,7 @@ public enum ErrorCode {
 
     USER_NOT_FOUND(404, "User Not Found"),
 
+    USERID_ALREADY_EXISTS(409, "Userid Already Exists"),
     FEED_NOT_FOUND_EXCEPTION(404, "feed Not Found")
     ;
 
