@@ -14,6 +14,6 @@ public class FeedFacade {
 
     public Feed getFeedId(Long feedId) {
         return feedRepository.findById(feedId)
-                .orElseThrow(() -> FeedNotFoundException.EXCEPTOIN);
+                .orElseThrow(() -> FeedNotFoundException.EXCEPTION);
     }
 }
