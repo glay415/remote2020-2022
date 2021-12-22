@@ -35,5 +35,5 @@ cloud:
       instanceProfile: true
 
   credentials:
-    access-key: ${ACCESS_KEY:AKIARPJSAODF5AKQSEXR}
-    secret-key: ${SECRET_KEY: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}
+    access-key: ${ACCESS_KEY:}
+    secret-key: ${SECRET_KEY:}
