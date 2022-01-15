@@ -28,9 +28,10 @@ public class Board {
     private User writer;
     // 추천 관계
 
-    public Board(CreateBoardRequestDto createBoardRequest) {
+    public Board(CreateBoardRequestDto createBoardRequest, User user) {
         this.title = createBoardRequest.getTitle();
         this.content = createBoardRequest.getContent();
         this.step = createBoardRequest.getStep();
+        this.writer = user;
     }
 }
