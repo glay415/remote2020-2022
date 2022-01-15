@@ -27,10 +27,7 @@ public class User {
 
     @OneToMany
     private List<Interest> interest;
-
-    @OneToMany
-    private List<Like> likeList;
-
+    
     @OneToMany
     private List<Board> myBoardList;
 

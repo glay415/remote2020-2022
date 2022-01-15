@@ -1,7 +1,9 @@
 package com.highthon.school.domain.board;
 
 import com.highthon.school.domain.board.dto.CreateBoardRequestDto;
+import com.highthon.school.domain.like.Like;
 import com.highthon.school.domain.user.User;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,7 +32,9 @@ public class Board {
 
     @ManyToOne
     private User user;
-    // 추천 관계
+
+    @OneToMany
+    private List<Like> likeList;
 
     public Board(CreateBoardRequestDto createBoardRequest, User user) {
         this.title = createBoardRequest.getTitle();
