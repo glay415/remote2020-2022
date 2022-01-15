@@ -21,11 +21,11 @@ public class JabController {
 
     @GetMapping("/jab-list/{branch}")
     public List<JabInfoResponseDto> jabList(@PathVariable Branch branch){
-        return jabService.jabList(branch, "token");
+        return jabService.jabList(branch);
     }
 
     @GetMapping("/jab/{name}")
     public JabInfoResponseDto getJab(@PathVariable String name){
-        return jabService.getJabDetails(name, "userId");
+        return jabService.getJabDetails(name);
     }
 }
