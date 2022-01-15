@@ -7,6 +7,7 @@ import com.highthon.school.domain.job.Jab;
 import com.highthon.school.domain.job.dto.CreateJabRequestDto;
 import com.highthon.school.domain.job.dto.JabInfoResponseDto;
 import com.highthon.school.domain.job.repository.JabRepository;
+import com.highthon.school.global.exception.JabNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +44,15 @@ public class JabService {
             );
         }
         return res;
+    }
+
+    public JabInfoResponseDto getJabDetails(String jabName, String userId){
+        Jab jab = jabRepository.findById(jabName).orElseThrow(JabNotFoundException::new);
+        return JabInfoResponseDto.builder()
+                .jab(jab.getName())
+                .intro(jab.getIntro())
+                .interest(interestCheck(userId, jab.getName()))
+                .branch(jab.getBranch()).build();
     }
 
     private boolean interestCheck(String userId, String jabName){
