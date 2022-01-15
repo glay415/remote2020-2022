@@ -1,5 +1,6 @@
 package com.highthon.school.domain.board.dto;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,6 +19,8 @@ public class BoardListResponseDto {
 		private final String title;
 		private final String content;
 		private final Long likeCount;
+		private final Long commentCount;
 		private final boolean isLiked;
+		private final LocalDateTime createdAt;
 	}
 }
