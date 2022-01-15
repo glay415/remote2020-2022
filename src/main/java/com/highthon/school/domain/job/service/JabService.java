@@ -2,7 +2,6 @@ package com.highthon.school.domain.job.service;
 
 import com.highthon.school.domain.interest.Interest;
 import com.highthon.school.domain.interest.repository.InterestRepository;
-import com.highthon.school.domain.job.Branch;
 import com.highthon.school.domain.job.Jab;
 import com.highthon.school.domain.job.dto.CreateJabRequestDto;
 import com.highthon.school.domain.job.dto.JabInfoResponseDto;
@@ -42,7 +41,7 @@ public class JabService {
                 .branch(jab.getBranch()).build();
     }
 
-    public List<JabInfoResponseDto> jabList(Branch branch){
+    public List<JabInfoResponseDto> jabList(int branch){
         return createJabInfoResponseList(jabRepository.findAllByBranch(branch));
     }
 
@@ -51,7 +50,7 @@ public class JabService {
         return createJabInfoResponseList(jabRepository.findAllByBranchOrderByInterestCount(branch));
     }
 
-    public List<JabInfoResponseDto> orderByJabNameList(Branch branch){
+    public List<JabInfoResponseDto> orderByJabNameList(int branch){
         return createJabInfoResponseList(jabRepository.findAllByBranchOrderByName(branch));
     }
 

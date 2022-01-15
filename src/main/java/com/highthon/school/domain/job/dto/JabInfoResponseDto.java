@@ -1,6 +1,5 @@
 package com.highthon.school.domain.job.dto;
 
-import com.highthon.school.domain.job.Branch;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -11,5 +10,5 @@ public class JabInfoResponseDto {
     public String jab;
     public String intro;
 
-    public Branch branch;
+    public int branch;
 }

@@ -20,7 +20,7 @@ public class Jab {
     @Id
     private String name;
     private String intro;
-    private Branch branch;
+    private int branch;
     private int interestCount;
     @OneToMany
     private List<Board> boards;

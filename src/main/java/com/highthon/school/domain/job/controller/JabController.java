@@ -1,6 +1,5 @@
 package com.highthon.school.domain.job.controller;
 
-import com.highthon.school.domain.job.Branch;
 import com.highthon.school.domain.job.dto.CreateJabRequestDto;
 import com.highthon.school.domain.job.dto.JabInfoResponseDto;
 import com.highthon.school.domain.job.service.JabService;
@@ -20,7 +19,7 @@ public class JabController {
     }
 
     @GetMapping("/jab-list/{branch}")
-    public List<JabInfoResponseDto> jabList(@PathVariable Branch branch){
+    public List<JabInfoResponseDto> jabList(@PathVariable int branch){
         return jabService.jabList(branch);
     }
 
@@ -30,7 +29,7 @@ public class JabController {
     }
 
     @GetMapping("/jab/{branch}/{num}")
-    public List<JabInfoResponseDto> jabLineUp(@PathVariable Branch branch, @PathVariable int num){
+    public List<JabInfoResponseDto> jabLineUp(@PathVariable int branch, @PathVariable int num){
         if (num==0){
             return jabService.mostInterestJabList(branch);
         } else if(num == 1){

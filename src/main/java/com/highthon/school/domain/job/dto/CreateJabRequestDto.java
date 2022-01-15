@@ -1,6 +1,5 @@
 package com.highthon.school.domain.job.dto;
 
-import com.highthon.school.domain.job.Branch;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -8,6 +7,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CreateJabRequestDto {
     private String name;
-    private Branch branch;
+    private int branch;
     private String intro;
 }
