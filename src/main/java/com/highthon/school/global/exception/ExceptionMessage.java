@@ -1,4 +1,4 @@
-package com.highthon.school.gobal.exception;
+package com.highthon.school.global.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
