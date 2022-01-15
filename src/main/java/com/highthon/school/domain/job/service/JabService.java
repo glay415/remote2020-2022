@@ -57,6 +57,20 @@ public class JabService {
                 .branch(jab.getBranch()).build();
     }
 
+    private List<JabInfoResponseDto> createJabInfoResponseList(List<Jab> jabs){
+        List<JabInfoResponseDto> res = new ArrayList<>();
+        for(Jab jab : jabs){
+            res.add(
+                    JabInfoResponseDto.builder()
+                            .jab(jab.getName())
+                            .intro(jab.getIntro())
+                            .interest(interestCheck(userFacade.getCurrentUser().getId(), jab.getName()))
+                            .branch(jab.getBranch()).build()
+            );
+        }
+        return res;
+    }
+
     private boolean interestCheck(String userId, String jabName){
         Optional<Interest> interest = interestRepository.findByJab_NameAndUser_Id(jabName, userId);
         return interest.isPresent();
