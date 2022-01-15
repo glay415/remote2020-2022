@@ -28,4 +28,14 @@ public class JabController {
     public JabInfoResponseDto getJab(@PathVariable String name){
         return jabService.getJabDetails(name);
     }
+
+    @GetMapping("/jab/{branch}/{num}")
+    public List<JabInfoResponseDto> jabLineUp(@PathVariable Branch branch, @PathVariable int num){
+        if (num==0){
+            return jabService.mostInterestJabList(branch);
+        } else if(num == 1){
+            return jabService.orderByJabNameList(branch);
+        }
+        return jabService.jabList(branch); // 최신순
+    }
 }
