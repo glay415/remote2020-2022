@@ -11,7 +11,8 @@ public enum ExceptionMessage {
     TOKEN_EXPIRED(401, "Token expired"),
     UNSUPPORTED_TOKEN(401, "Unsupported token"),
     USER_NOT_FOUND(404,"User Not Found"),
-    JOB_NOT_FOUND(404, "Jab Not Found");
+    JOB_NOT_FOUND(404, "Jab Not Found")
+    CREDENTIALS_NOT_FOUND(401, "Credentials not found.");
 
     private final int status;
 
