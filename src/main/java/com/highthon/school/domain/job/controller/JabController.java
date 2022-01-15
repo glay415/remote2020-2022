@@ -23,6 +23,12 @@ public class JabController {
         return jabService.jabList(branch);
     }
 
+    // main
+    @GetMapping("/jabs/{branch}")
+    public List<JabInfoResponseDto> jabListToMain(@PathVariable int branch){
+        return jabService.jabListToMain(branch);
+    }
+
     @GetMapping("/jab/{name}")
     public JabInfoResponseDto jabSearch(@PathVariable String name){
         return jabService.getJabDetails(name);

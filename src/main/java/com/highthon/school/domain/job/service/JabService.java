@@ -45,6 +45,21 @@ public class JabService {
         return createJabInfoResponseList(jabRepository.findAllByBranch(branch));
     }
 
+    public List<JabInfoResponseDto> jabListToMain(int branch){
+        List<Jab> jabs = jabRepository.findAllByBranch(branch);
+        List<JabInfoResponseDto> res = new ArrayList<>();
+        for(Jab jab : jabs){
+            res.add(
+                    JabInfoResponseDto.builder()
+                            .jab(jab.getName())
+                            .intro(jab.getIntro())
+                            .interest(false)
+                            .branch(jab.getBranch()).build()
+            );
+        }
+        return res;
+    }
+
     public List<JabInfoResponseDto> mostInterestJabList(int branch){
         return createJabInfoResponseList(jabRepository.findAllByBranchOrderByInterestCountDesc(branch));
     }
@@ -54,6 +69,7 @@ public class JabService {
     }
 
     private List<JabInfoResponseDto> createJabInfoResponseList(List<Jab> jabs){
+
         List<JabInfoResponseDto> res = new ArrayList<>();
         for(Jab jab : jabs){
             res.add(
