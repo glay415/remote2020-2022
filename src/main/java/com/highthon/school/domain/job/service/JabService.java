@@ -33,21 +33,6 @@ public class JabService {
         );
     }
 
-    public List<JabInfoResponseDto> jabList(Branch branch){
-        List<Jab> jabs = jabRepository.findAllByBranch(branch);
-        List<JabInfoResponseDto> res = new ArrayList<>();
-        for(Jab jab : jabs){
-            res.add(
-                    JabInfoResponseDto.builder()
-                                    .jab(jab.getName())
-                                    .intro(jab.getIntro())
-                                    .interest(interestCheck(userFacade.getCurrentUser().getId(), jab.getName()))
-                                    .branch(jab.getBranch()).build()
-            );
-        }
-        return res;
-    }
-
     public JabInfoResponseDto getJabDetails(String jabName){
         Jab jab = jabRepository.findById(jabName).orElseThrow(JabNotFoundException::new);
         return JabInfoResponseDto.builder()
@@ -55,6 +40,19 @@ public class JabService {
                 .intro(jab.getIntro())
                 .interest(interestCheck(userFacade.getCurrentUser().getId(), jab.getName()))
                 .branch(jab.getBranch()).build();
+    }
+
+    public List<JabInfoResponseDto> jabList(Branch branch){
+        return createJabInfoResponseList(jabRepository.findAllByBranch(branch));
+    }
+
+    // 관심 순
+    public List<JabInfoResponseDto> mostInterestJabList(Branch branch){
+        return createJabInfoResponseList(jabRepository.findAllByBranchOrderByInterestCount(branch));
+    }
+
+    public List<JabInfoResponseDto> orderByJabNameList(Branch branch){
+        return createJabInfoResponseList(jabRepository.findAllByBranchOrderByName(branch));
     }
 
     private List<JabInfoResponseDto> createJabInfoResponseList(List<Jab> jabs){
