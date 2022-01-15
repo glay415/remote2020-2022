@@ -45,9 +45,8 @@ public class JabService {
         return createJabInfoResponseList(jabRepository.findAllByBranch(branch));
     }
 
-    // 관심 순
-    public List<JabInfoResponseDto> mostInterestJabList(Branch branch){
-        return createJabInfoResponseList(jabRepository.findAllByBranchOrderByInterestCount(branch));
+    public List<JabInfoResponseDto> mostInterestJabList(int branch){
+        return createJabInfoResponseList(jabRepository.findAllByBranchOrderByInterestCountDesc(branch));
     }
 
     public List<JabInfoResponseDto> orderByJabNameList(int branch){
