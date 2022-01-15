@@ -57,9 +57,9 @@ public class BoardService {
 				.stream().map(b -> BoardResponse.builder()
 											.id(b.getId())
 											.title(b.getTitle())
-											.content(b.getContent()).build())
-//											.likeCount(likeRepository.countByBoardId(b.getId()))
-//											.isLiked(isLiked()).build())
+											.content(b.getContent())
+											.likeCount(honeyRepository.countByBoardId(b.getId()))
+											.isLiked(isLiked()).build())
 				.collect(Collectors.toList()));
 	}
 
