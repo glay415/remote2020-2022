@@ -59,6 +59,7 @@ public class BoardService {
 				.isLiked(isLiked())
 				.commentCount(countCommentByBoardId(boardId))
 				.createdAt(board.getCreatedAt())
+				.writer(board.getUser().getNickname())
 				.commentResponseList(commentResponseBuilder(boardId))
 				.build())
 			.orElseThrow(BoardNotFoundException::new);
