@@ -1,4 +1,4 @@
-package com.highthon.school.global.exception;
+package com.highthon.school.global.error;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

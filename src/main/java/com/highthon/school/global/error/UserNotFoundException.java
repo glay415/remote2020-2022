@@ -1,4 +1,4 @@
-package com.highthon.school.global.exception;
+package com.highthon.school.global.error;
 
 public class UserNotFoundException extends BasicException{
     public UserNotFoundException() {
