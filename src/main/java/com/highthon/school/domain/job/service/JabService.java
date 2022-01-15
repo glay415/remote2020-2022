@@ -14,6 +14,7 @@ public class JabService {
         jabRepository.save(
                 Jab.builder()
                         .name(req.getName())
+                        .intro(req.getIntro())
                         .branch(req.getBranch())
                         .build()
         );
