@@ -52,6 +52,17 @@ public class BoardService {
 			.orElseThrow(BoardNotFoundException::new);
 	}
 
+	public BoardListResponseDto contentSearch(String content){
+		return new BoardListResponseDto(boardRepository.findByContentContaining(content)
+				.stream().map(b -> BoardResponse.builder()
+											.id(b.getId())
+											.title(b.getTitle())
+											.content(b.getContent()).build())
+//											.likeCount(likeRepository.countByBoardId(b.getId()))
+//											.isLiked(isLiked()).build())
+				.collect(Collectors.toList()));
+	}
+
 	private boolean isLiked() {
 		return likeRepository.existsByUser(userFacade.getCurrentUser());
 	}
