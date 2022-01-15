@@ -7,6 +7,7 @@ import com.highthon.school.domain.job.Jab;
 import com.highthon.school.domain.job.dto.CreateJabRequestDto;
 import com.highthon.school.domain.job.dto.JabInfoResponseDto;
 import com.highthon.school.domain.job.repository.JabRepository;
+import com.highthon.school.domain.user.facade.UserFacade;
 import com.highthon.school.global.exception.JabNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ import java.util.Optional;
 public class JabService {
     private final JabRepository jabRepository;
     private final InterestRepository interestRepository;
+    private final UserFacade userFacade;
 
     public void createJab(CreateJabRequestDto req){
         jabRepository.save(
@@ -31,7 +33,7 @@ public class JabService {
         );
     }
 
-    public List<JabInfoResponseDto> jabList(Branch branch, String userId){
+    public List<JabInfoResponseDto> jabList(Branch branch){
         List<Jab> jabs = jabRepository.findAllByBranch(branch);
         List<JabInfoResponseDto> res = new ArrayList<>();
         for(Jab jab : jabs){
@@ -39,19 +41,19 @@ public class JabService {
                     JabInfoResponseDto.builder()
                                     .jab(jab.getName())
                                     .intro(jab.getIntro())
-                                    .interest(interestCheck(userId, jab.getName()))
+                                    .interest(interestCheck(userFacade.getCurrentUser().getId(), jab.getName()))
                                     .branch(jab.getBranch()).build()
             );
         }
         return res;
     }
 
-    public JabInfoResponseDto getJabDetails(String jabName, String userId){
+    public JabInfoResponseDto getJabDetails(String jabName){
         Jab jab = jabRepository.findById(jabName).orElseThrow(JabNotFoundException::new);
         return JabInfoResponseDto.builder()
                 .jab(jab.getName())
                 .intro(jab.getIntro())
-                .interest(interestCheck(userId, jab.getName()))
+                .interest(interestCheck(userFacade.getCurrentUser().getId(), jab.getName()))
                 .branch(jab.getBranch()).build();
     }
 
