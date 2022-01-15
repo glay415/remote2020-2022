@@ -8,4 +8,9 @@ import java.util.List;
 
 public interface JabRepository extends CrudRepository<Jab, String> {
     List<Jab> findAllByBranch(Branch branch);
+
+    List<Jab> findAllByBranchOrderByName(Branch branch);
+
+    List<Jab> findAllByBranchOrderByInterestCount(Branch branch);
+
 }
