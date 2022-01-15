@@ -36,6 +36,9 @@ public class Comment {
 	@ManyToOne
 	private User user;
 
+	@CreatedDate
+	private LocalDateTime createAt;
+
 	@OneToMany(fetch = FetchType.EAGER,
 		cascade = CascadeType.REMOVE)
 	private List<Reply> replyList;

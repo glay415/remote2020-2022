@@ -2,6 +2,7 @@ package com.highthon.school.domain.reply;
 
 import com.highthon.school.domain.comment.Comment;
 import com.highthon.school.domain.user.User;
+import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +13,7 @@ import javax.persistence.ManyToOne;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -29,6 +31,9 @@ public class Reply {
 
 	@ManyToOne
 	private User user;
+
+	@CreatedDate
+	private LocalDateTime createAt;
 
 	public Reply(String content, Comment comment, User user) {
 		this.content = content;
