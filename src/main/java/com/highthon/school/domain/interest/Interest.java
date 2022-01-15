@@ -19,11 +19,9 @@ public class Interest {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int num;
 
-    @JoinColumn(name = "id")
     @ManyToOne
     private Jab jab;
 
-    @JoinColumn(name = "id")
     @ManyToOne
     private User user;
 }
