@@ -12,8 +12,11 @@ import com.highthon.school.domain.board.exception.BoardNotFoundException;
 import com.highthon.school.domain.board.repository.BoardRepository;
 import com.highthon.school.domain.comment.repository.CommentRepository;
 import com.highthon.school.domain.honey.repository.HoneyRepository;
+import com.highthon.school.domain.job.Jab;
+import com.highthon.school.domain.job.repository.JabRepository;
 import com.highthon.school.domain.reply.repository.ReplyRepository;
 import com.highthon.school.domain.user.facade.UserFacade;
+import com.highthon.school.global.exception.JabNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -27,15 +30,20 @@ public class BoardService {
 	private final HoneyRepository honeyRepository;
 	private final CommentRepository commentRepository;
 	private final ReplyRepository replyRepository;
+	private final JabRepository jabRepository;
 	private final UserFacade userFacade;
 
 	public void createBoard(CreateBoardRequestDto createBoardRequest) {
-		boardRepository.save(new Board(createBoardRequest, userFacade.getCurrentUser()));
+		Jab jab = jabRepository.findById(createBoardRequest.getJap())
+			.orElseThrow(JabNotFoundException::new);
+		boardRepository.save(new Board(createBoardRequest, userFacade.getCurrentUser(), jab));
 	}
 
-	public BoardListResponseDto boardList(Step step) {
-		 return new BoardListResponseDto(
-		 	boardRepository.findByStep(step)
+	public BoardListResponseDto boardList(Step step, String japId) {
+		Jab jab = jabRepository.findById(japId)
+			.orElseThrow(JabNotFoundException::new);
+		return new BoardListResponseDto(
+		 	boardRepository.findByStepAndJab(step, jab)
 			 .stream()
 			 .map(board -> BoardResponse.builder()
 				 .id(board.getId())

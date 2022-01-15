@@ -21,8 +21,8 @@ public class BoardController {
 	}
 
 	@GetMapping("/list")
-	private BoardListResponseDto boardList(@RequestParam Step step) {
-		return boardService.boardList(step);
+	private BoardListResponseDto boardList(@RequestParam Step step, @RequestParam String jap) {
+		return boardService.boardList(step, jap);
 	}
 
 	@GetMapping

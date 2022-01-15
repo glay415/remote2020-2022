@@ -2,6 +2,7 @@ package com.highthon.school.domain.board;
 
 import com.highthon.school.domain.board.dto.CreateBoardRequestDto;
 import com.highthon.school.domain.honey.Honey;
+import com.highthon.school.domain.job.Jab;
 import com.highthon.school.domain.user.User;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -40,13 +41,17 @@ public class Board {
     @OneToMany
     private List<Honey> honeyList;
 
+    @ManyToOne
+    private Jab jab;
+
     @CreatedDate
     private LocalDateTime createdAt;
 
-    public Board(CreateBoardRequestDto createBoardRequest, User user) {
+    public Board(CreateBoardRequestDto createBoardRequest, User user, Jab jab) {
         this.title = createBoardRequest.getTitle();
         this.content = createBoardRequest.getContent();
         this.step = createBoardRequest.getStep();
         this.user = user;
+        this.jab = jab;
     }
 }

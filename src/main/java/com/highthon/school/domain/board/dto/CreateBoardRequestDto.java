@@ -10,4 +10,5 @@ public class CreateBoardRequestDto {
 	private String title;
 	private String content;
 	private Step step;
+	private String jap;
 }
