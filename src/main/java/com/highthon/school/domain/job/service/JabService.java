@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class JabService {
     private final JabRepository jabRepository;
+    private final InterestRepository interestRepository;
+
     public void createJab(CreateJabRequestDto req){
         jabRepository.save(
                 Jab.builder()
