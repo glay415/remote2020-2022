@@ -1,5 +1,6 @@
 package com.highthon.school.domain.user.controller;
 
+import com.highthon.school.domain.user.dto.MyInformationResponseDto;
 import com.highthon.school.domain.user.dto.SignInRequestDto;
 import com.highthon.school.domain.user.dto.SignUpRequestDto;
 import com.highthon.school.domain.user.dto.TokenResponseDto;
@@ -32,4 +33,8 @@ public class UserController {
 		return userService.singIn(signInRequest);
 	}
 
+	@GetMapping
+	public MyInformationResponseDto myInformation() {
+		return userService.myInformation();
+	}
 }
