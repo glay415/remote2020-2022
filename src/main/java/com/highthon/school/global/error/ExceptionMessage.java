@@ -12,6 +12,7 @@ public enum ExceptionMessage {
     UNSUPPORTED_TOKEN(401, "Unsupported token"),
     USER_NOT_FOUND(404,"User Not Found"),
     JOB_NOT_FOUND(404, "Jab Not Found"),
+    BOARD_NOT_FOUND(404, "Board Not Found"),
     CREDENTIALS_NOT_FOUND(401, "Credentials not found."),
     USER_ALREADY_EXIST(409, "User Already Exist");
 

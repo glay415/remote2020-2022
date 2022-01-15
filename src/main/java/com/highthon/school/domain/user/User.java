@@ -3,6 +3,7 @@ package com.highthon.school.domain.user;
 import com.highthon.school.domain.board.Board;
 import com.highthon.school.domain.interest.Interest;
 
+import com.highthon.school.domain.like.Like;
 import com.highthon.school.domain.user.dto.SignUpRequestDto;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -24,10 +25,13 @@ public class User {
     private String password;
     private String nickname;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany
     private List<Interest> interest;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany
+    private List<Like> likeList;
+
+    @OneToMany
     private List<Board> myBoardList;
 
     public User(SignUpRequestDto signUpRequest) {
