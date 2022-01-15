@@ -6,12 +6,7 @@ import com.highthon.school.domain.board.dto.BoardListResponseDto;
 import com.highthon.school.domain.board.dto.CreateBoardRequestDto;
 import com.highthon.school.domain.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RequestMapping("/board")
@@ -33,5 +28,10 @@ public class BoardController {
 	@GetMapping
 	public BoardDetailResponseDto boardDetail(@RequestParam Integer boardId) {
 		return boardService.boardDetail(boardId);
+	}
+
+	@GetMapping("/{content}")
+	public BoardListResponseDto contentSearch(@PathVariable String content){
+		return boardService.contentSearch(content);
 	}
 }
