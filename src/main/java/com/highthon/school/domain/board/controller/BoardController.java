@@ -3,6 +3,7 @@ package com.highthon.school.domain.board.controller;
 import com.highthon.school.domain.board.dto.CreateBoardRequestDto;
 import com.highthon.school.domain.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
