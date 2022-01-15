@@ -1,6 +1,6 @@
-package com.highthon.school.domain.like.controller;
+package com.highthon.school.domain.honey.controller;
 
-import com.highthon.school.domain.like.service.LikeService;
+import com.highthon.school.domain.honey.service.HoneyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/likes")
 @RestController
-public class LikeController {
+public class HoneyController {
 
-	private final LikeService likeService;
+	private final HoneyService honeyService;
 
 	@PostMapping
 	public void like(@RequestParam Integer boardId) {
-		likeService.liked(boardId);
+		honeyService.liked(boardId);
 	}
 }

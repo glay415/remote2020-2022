@@ -1,33 +1,33 @@
-package com.highthon.school.domain.like.service;
+package com.highthon.school.domain.honey.service;
 
 import com.highthon.school.domain.board.exception.BoardNotFoundException;
 import com.highthon.school.domain.board.repository.BoardRepository;
-import com.highthon.school.domain.like.Like;
-import com.highthon.school.domain.like.repository.LikeRepository;
+import com.highthon.school.domain.honey.Honey;
+import com.highthon.school.domain.honey.repository.HoneyRepository;
 import com.highthon.school.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class LikeService {
+public class HoneyService {
 
 	private final BoardRepository boardRepository;
-	private final LikeRepository likeRepository;
+	private final HoneyRepository honeyRepository;
 	private final UserFacade userFacade;
 
 	public void liked(Integer boardId) {
 
-		if (likeRepository.existsByUser(userFacade.getCurrentUser())) {
-			likeRepository.deleteByBoardId(boardId);
+		if (honeyRepository.existsByUser(userFacade.getCurrentUser())) {
+			honeyRepository.deleteByBoardId(boardId);
 		}
 		else {
-			Like like = Like.builder()
+			Honey honey = Honey.builder()
 				.user(userFacade.getCurrentUser())
 				.board(boardRepository.findById(boardId).orElseThrow(BoardNotFoundException::new))
 				.build();
 
-			likeRepository.save(like);
+			honeyRepository.save(honey);
 		}
 	}
 }

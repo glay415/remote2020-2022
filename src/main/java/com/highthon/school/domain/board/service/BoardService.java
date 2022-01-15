@@ -8,7 +8,7 @@ import com.highthon.school.domain.board.dto.BoardListResponseDto.BoardResponse;
 import com.highthon.school.domain.board.dto.CreateBoardRequestDto;
 import com.highthon.school.domain.board.exception.BoardNotFoundException;
 import com.highthon.school.domain.board.repository.BoardRepository;
-import com.highthon.school.domain.like.repository.LikeRepository;
+import com.highthon.school.domain.honey.repository.HoneyRepository;
 import com.highthon.school.domain.user.facade.UserFacade;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 public class BoardService {
 
 	private final BoardRepository boardRepository;
-	private final LikeRepository likeRepository;
+	private final HoneyRepository honeyRepository;
 	private final UserFacade userFacade;
 
 	public void createBoard(CreateBoardRequestDto createBoardRequest) {
@@ -34,7 +34,7 @@ public class BoardService {
 				 .id(board.getId())
 				 .title(board.getTitle())
 				 .content(board.getContent())
-				 .likeCount(likeRepository.countByBoardId(board.getId()))
+				 .likeCount(honeyRepository.countByBoardId(board.getId()))
 				 .isLiked(isLiked())
 				 .build())
 			 .collect(Collectors.toList())
@@ -46,7 +46,7 @@ public class BoardService {
 			.map(board -> BoardDetailResponseDto.builder()
 				.title(board.getTitle())
 				.content(board.getContent())
-				.likeCount(likeRepository.countByBoardId(boardId))
+				.likeCount(honeyRepository.countByBoardId(boardId))
 				.isLiked(isLiked())
 				.build())
 			.orElseThrow(BoardNotFoundException::new);
@@ -64,6 +64,6 @@ public class BoardService {
 	}
 
 	private boolean isLiked() {
-		return likeRepository.existsByUser(userFacade.getCurrentUser());
+		return honeyRepository.existsByUser(userFacade.getCurrentUser());
 	}
 }

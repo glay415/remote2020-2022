@@ -3,7 +3,6 @@ package com.highthon.school.domain.user;
 import com.highthon.school.domain.board.Board;
 import com.highthon.school.domain.interest.Interest;
 
-import com.highthon.school.domain.like.Like;
 import com.highthon.school.domain.user.dto.SignUpRequestDto;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,9 +10,6 @@ import lombok.Getter;
 import javax.persistence.OneToMany;
 import java.util.List;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
@@ -27,7 +23,7 @@ public class User {
 
     @OneToMany
     private List<Interest> interest;
-    
+
     @OneToMany
     private List<Board> myBoardList;
 

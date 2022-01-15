@@ -1,8 +1,7 @@
-package com.highthon.school.domain.like;
+package com.highthon.school.domain.honey;
 
 import com.highthon.school.domain.board.Board;
 import com.highthon.school.domain.user.User;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,8 +16,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
-public class Like {
+public class Honey {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
