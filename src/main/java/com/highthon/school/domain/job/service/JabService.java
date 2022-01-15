@@ -2,7 +2,6 @@ package com.highthon.school.domain.job.service;
 
 import com.highthon.school.domain.interest.Interest;
 import com.highthon.school.domain.interest.repository.InterestRepository;
-import com.highthon.school.domain.job.Branch;
 import com.highthon.school.domain.job.Jab;
 import com.highthon.school.domain.job.dto.CreateJabRequestDto;
 import com.highthon.school.domain.job.dto.JabInfoResponseDto;
@@ -33,21 +32,6 @@ public class JabService {
         );
     }
 
-    public List<JabInfoResponseDto> jabList(Branch branch){
-        List<Jab> jabs = jabRepository.findAllByBranch(branch);
-        List<JabInfoResponseDto> res = new ArrayList<>();
-        for(Jab jab : jabs){
-            res.add(
-                    JabInfoResponseDto.builder()
-                                    .jab(jab.getName())
-                                    .intro(jab.getIntro())
-                                    .interest(interestCheck(userFacade.getCurrentUser().getId(), jab.getName()))
-                                    .branch(jab.getBranch()).build()
-            );
-        }
-        return res;
-    }
-
     public JabInfoResponseDto getJabDetails(String jabName){
         Jab jab = jabRepository.findById(jabName).orElseThrow(JabNotFoundException::new);
         return JabInfoResponseDto.builder()
@@ -55,6 +39,32 @@ public class JabService {
                 .intro(jab.getIntro())
                 .interest(interestCheck(userFacade.getCurrentUser().getId(), jab.getName()))
                 .branch(jab.getBranch()).build();
+    }
+
+    public List<JabInfoResponseDto> jabList(int branch){
+        return createJabInfoResponseList(jabRepository.findAllByBranch(branch));
+    }
+
+    public List<JabInfoResponseDto> mostInterestJabList(int branch){
+        return createJabInfoResponseList(jabRepository.findAllByBranchOrderByInterestCountDesc(branch));
+    }
+
+    public List<JabInfoResponseDto> orderByJabNameList(int branch){
+        return createJabInfoResponseList(jabRepository.findAllByBranchOrderByName(branch));
+    }
+
+    private List<JabInfoResponseDto> createJabInfoResponseList(List<Jab> jabs){
+        List<JabInfoResponseDto> res = new ArrayList<>();
+        for(Jab jab : jabs){
+            res.add(
+                    JabInfoResponseDto.builder()
+                            .jab(jab.getName())
+                            .intro(jab.getIntro())
+                            .interest(interestCheck(userFacade.getCurrentUser().getId(), jab.getName()))
+                            .branch(jab.getBranch()).build()
+            );
+        }
+        return res;
     }
 
     private boolean interestCheck(String userId, String jabName){

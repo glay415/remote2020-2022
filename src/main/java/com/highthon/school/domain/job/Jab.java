@@ -20,7 +20,16 @@ public class Jab {
     @Id
     private String name;
     private String intro;
-    private Branch branch;
+    private int branch;
+    private int interestCount;
     @OneToMany
     private List<Board> boards;
+
+    public void minusInterestCount(){ // 리팩토링 후 protected
+        this.interestCount--;
+    }
+
+    public void plusInterestCount(){
+        this.interestCount++;
+    }
 }

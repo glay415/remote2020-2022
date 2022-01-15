@@ -3,11 +3,13 @@ package com.highthon.school.domain.interest.service;
 import com.highthon.school.domain.interest.Interest;
 import com.highthon.school.domain.interest.dto.InterestJabResponseDto;
 import com.highthon.school.domain.interest.repository.InterestRepository;
+import com.highthon.school.domain.job.Jab;
 import com.highthon.school.domain.job.repository.JabRepository;
 import com.highthon.school.domain.user.facade.UserFacade;
 import com.highthon.school.global.exception.JabNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,14 +22,19 @@ public class InterestService {
     private final JabRepository jabRepository;
     private final UserFacade userFacade;
 
+    @Transactional
     public void interestJab(String name){
+        Jab jab = jabRepository.findById(name).orElseThrow(JabNotFoundException::new);
         Interest interest = Interest.builder()
-                                    .jab(jabRepository.findById(name).orElseThrow(JabNotFoundException::new))
+                                    .jab(jab)
                                     .user(userFacade.getCurrentUser()).build();
-        if (interestCheck(userFacade.getCurrentUser().getId(), name)){
-            interestRepository.delete(interest);
+        Optional<Interest> i = interestRepository.findByJab_NameAndUser_Id(jab.getName(), userFacade.getCurrentUser().getId());
+        if (i.isPresent()){
+            jab.minusInterestCount();
+            interestRepository.delete(i.orElseThrow());
             return;
         }
+        jab.plusInterestCount();
         interestRepository.save(interest);
     }
     public List<InterestJabResponseDto> getInterestJab(){
@@ -41,9 +48,5 @@ public class InterestService {
             );
         }
         return jabs;
-    }
-    private boolean interestCheck(String userId, String jabName){
-        Optional<Interest> interest = interestRepository.findByJab_NameAndUser_Id(jabName, userId);
-        return interest.isPresent();
     }
 }
