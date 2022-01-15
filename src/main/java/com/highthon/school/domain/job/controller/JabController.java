@@ -24,7 +24,7 @@ public class JabController {
     }
 
     @GetMapping("/jab/{name}")
-    public JabInfoResponseDto getJab(@PathVariable String name){
+    public JabInfoResponseDto jabSearch(@PathVariable String name){
         return jabService.getJabDetails(name);
     }
 
