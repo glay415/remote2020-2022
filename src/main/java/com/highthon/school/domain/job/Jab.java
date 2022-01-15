@@ -19,9 +19,8 @@ import java.util.List;
 public class Jab {
     @Id
     private String name;
-
+    private String intro;
     private Branch branch;
-
     @OneToMany
     private List<Board> boards;
 }

@@ -9,4 +9,5 @@ import lombok.Getter;
 public class CreateJabRequestDto {
     private final String name;
     private final Branch branch;
+    private final String intro;
 }
