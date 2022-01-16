@@ -52,6 +52,7 @@ public class BoardService {
 				 .likeCount(honeyRepository.countByBoardId(board.getId()))
 				 .isLiked(isLiked())
 				 .commentCount(countCommentByBoardId(board.getId()))
+				 .writer(board.getUser().getNickname())
 				 .createdAt(board.getCreatedAt())
 				 .build())
 			 .collect(Collectors.toList())

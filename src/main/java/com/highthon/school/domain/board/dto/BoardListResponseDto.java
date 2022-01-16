@@ -21,6 +21,7 @@ public class BoardListResponseDto {
 		private final Long likeCount;
 		private final Long commentCount;
 		private final boolean isLiked;
+		private final String writer;
 		private final LocalDateTime createdAt;
 	}
 }
