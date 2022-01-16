@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -17,6 +19,7 @@ public class InterestController {
 
     @PostMapping("/interest/{name}")
     public void interestJab(@PathVariable(name = "name") String jabName){
+        jabName = URLDecoder.decode(jabName, StandardCharsets.UTF_8);
         interestService.interestJab(jabName);
     }
 

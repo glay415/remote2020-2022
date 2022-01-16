@@ -8,6 +8,9 @@ import com.highthon.school.domain.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
+
 @RequiredArgsConstructor
 @RequestMapping("/board")
 @RestController
@@ -32,6 +35,7 @@ public class BoardController {
 
 	@GetMapping("/{content}")
 	public BoardListResponseDto contentSearch(@PathVariable String content){
+		content = URLDecoder.decode(content, StandardCharsets.UTF_8);
 		return boardService.contentSearch(content);
 	}
 }

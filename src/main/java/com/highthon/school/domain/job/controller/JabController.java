@@ -6,6 +6,9 @@ import com.highthon.school.domain.job.service.JabService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -30,7 +33,8 @@ public class JabController {
     }
 
     @GetMapping("/jab/{name}")
-    public JabInfoResponseDto jabSearch(@PathVariable String name){
+    public JabInfoResponseDto jabSearch(@PathVariable String name) throws UnsupportedEncodingException {
+        name = URLDecoder.decode(name, StandardCharsets.UTF_8);
         return jabService.getJabDetails(name);
     }
 
