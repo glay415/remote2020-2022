@@ -1,32 +1,29 @@
-# study
-
------------------
-
-## Table of contents
-
-Computer
-
-- [Network](#Network)
-
-
-
-## Network
+# Chapter
 
 ---
 
-Net + Work 의 합성어로
+- [computer network](#computer network)
 
-- 분산된 컴퓨터를 연결시켜 그물망처럼 연결되어 있으며
-- 데이터를 송신, 수신, 작성 또는 저장할 수 있게하는
-- 디지털 전기통신망, 네트워크 내의 연결지점
 
-> 몇 개의 독립적인 장치가 적절한 영역내에서 적당히 빠른 속도의 물리적  통신채널을 통하여 서로가 직접 통신할 수 있도록 지원해 주는 통신체계
->
-> -IEEE(Institute of Electrical and Electronics Engineers)
 
-분류
+Cancel changes
 
-- [크기에 따른 분류](https://github.com/glay415/study/blob/main/theory/network/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%20%ED%81%AC%EA%B8%B0%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EB%B6%84%EB%A5%98.md)
+## Computer Network
 
------------------
+---------
 
+전송매체를 통해 연결되어진 컴퓨터들이 자원을 공유할 수 있게 하는 시스템
+
+- 송신자, 수신자, 전송 매체로 구성됨
+
+- 송신자와 수신자간의 자원 전달은 프로토콜에 따라 이루어짐
+
+  ### Protocol
+
+  - 프로토콜
+
+## reference
+
+-----
+
+- 소프트웨어 중심사회의 컴퓨터 개론
