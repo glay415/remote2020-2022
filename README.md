@@ -1,16 +1,10 @@
 # Chapter
 
----
-
 - [Computer Network](#computer-network)
-
-
 
 ----------
 
 ## Computer Network
-
----------
 
 전송매체를 통해 연결되어진 컴퓨터들이 자원을 공유할 수 있게 하는 시스템
 
@@ -46,8 +40,6 @@
 ---------
 
 ## reference
-
------
 
 - 소프트웨어 중심사회의 컴퓨터 개론
 
