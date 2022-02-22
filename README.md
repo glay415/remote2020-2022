@@ -1,6 +1,6 @@
 # Chapter
 
-- [Computer Network](#computer-network)
+1. [Computer Network](#computer-network)
 
 ----------
 
