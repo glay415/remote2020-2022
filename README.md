@@ -37,6 +37,8 @@
   - 웹 서버
   - 웹 프로그래밍
 
+![파일:BusNetwork.svg](https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/BusNetwork.svg/527px-BusNetwork.svg.png)
+
 ---------
 
 ## reference
