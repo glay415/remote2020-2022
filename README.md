@@ -4,7 +4,6 @@
 - [Reference](#reference)
 - [Development](#Development)
 
-----------
 
 ## Computer Network
 
@@ -41,7 +40,6 @@
   - 웹 서버
   - 웹 프로그래밍
 
------
 
 ## Development
 
@@ -49,11 +47,8 @@
 
 - [Reference Variable](https://github.com/glay415/backend-database/blob/main/theory/development/java/Reference%20Variable.md)
 
----------
 
 ## Reference
 
 - 소프트웨어 중심사회의 컴퓨터 개론
-
----------------
 
