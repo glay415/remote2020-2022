@@ -19,14 +19,14 @@
 
   (자료구조등 예외 케이스 있음)
 
-## Primitive Variable과의 차이
+### Primitive Variable과의 차이
 
 - Heap Area에서 실제 값들을 저장한다.
 - Null 사용이 가능하다.
 - 제네릭 타입이 사용 가능하다.
 - 접근 속도가 훨씬 느리고 메모리 양도 많이사용한다.
 
-## Reference Variable의 메모리 사용크기
+### Reference Variable의 메모리 사용크기
 
 - Primitive Variable과는 다르게 따로 크기는 정해져 있지 않지만 표현 범위는 다음과 같다.
 
