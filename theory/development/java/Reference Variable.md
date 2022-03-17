@@ -31,7 +31,7 @@
 
 - Primitive Variable과는 다르게 따로 크기는 정해져 있지 않지만 표현 범위는 다음과 같다.
 
-- ![화면 캡처 2022-03-17 193851](C:\Users\user\Downloads\화면 캡처 2022-03-17 193851.png)
+- ![화면 캡처 2022-03-17 193851](https://github.com/glay415/backend-database/blob/main/theory/images/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-03-17%20193851.png?raw=true)
 
 - Heap이 32Gb(-Xmx32G) 보다 작은 32bit 플랫폼 및 64bit 플랫폼에서 4byte 이며
 
