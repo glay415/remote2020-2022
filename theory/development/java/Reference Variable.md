@@ -12,8 +12,6 @@
 
 - Heap Area에 실제 값들을 저장하고 Stack Area에 실제 값들의 주소를 참조하는 방식의 타입이다.
 
-- Heap Area의 메모리 공간이 동적으로 크기가 변하기 때문에 대량의 데이터를 넣을 때에 고정된 데이터 공간을 사용하는 것 보다 효율적이다.
-
 - 더이상 참조하는 변수가 없으면 GC가 작동하여 Heap Area에서 자동으로 제거된다.
 
 - Reference Variable에서의 Null은 객체의 주소를 가리키고 있지 않는 상태를 의미한다.
@@ -33,7 +31,7 @@
 
 - Primitive Variable과는 다르게 따로 크기는 정해져 있지 않지만 표현 범위는 다음과 같다.
 
-- ![image-20220317155502564](C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20220317155502564.png)
+- ![화면 캡처 2022-03-17 193851](C:\Users\user\Downloads\화면 캡처 2022-03-17 193851.png)
 
 - Heap이 32Gb(-Xmx32G) 보다 작은 32bit 플랫폼 및 64bit 플랫폼에서 4byte 이며
 
@@ -52,7 +50,6 @@
 - https://velog.io/@doli0913/%EA%B8%B0%EB%B3%B8%ED%98%95%EA%B3%BC-%EC%B0%B8%EC%A1%B0%ED%98%95
 - https://www.baeldung.com/java-size-of-object
 - https://rang22.tistory.com/8?category=999533
-- https://velog.io/@bining/javascript-%EC%9B%90%EC%8B%9C%ED%83%80%EC%9E%85primitive-type-VS-%EC%B0%B8%EC%A1%B0%ED%83%80%EC%9E%85reference-typefeat.-stack%EA%B3%BC-heap-%EC%98%81%EC%97%AD
 - https://week-year.tistory.com/141
 
 ----
