@@ -1,6 +1,5 @@
 ## Reference Variable
 
-----
 
 ### 개요
 
@@ -37,13 +36,11 @@
 
   32Gb보다 높은 경우에 8byte 이라고 한다.
 
----
 
 ### extra
 
 - wrapper클래스도 Reference Variable의 일종이다.(따로 정리)
 
----
 
 ### reference
 
@@ -51,6 +48,4 @@
 - https://www.baeldung.com/java-size-of-object
 - https://rang22.tistory.com/8?category=999533
 - https://week-year.tistory.com/141
-
-----
 
