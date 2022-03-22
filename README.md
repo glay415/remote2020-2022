@@ -1,7 +1,7 @@
 # Chapter
 
-- [Reference](#reference)
 - [Development](#Development)
+- [Reference](#reference)
 
 ## Development
 
