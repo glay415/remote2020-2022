@@ -5,6 +5,7 @@
 
 ## Development
 
+- [객체지향](https://github.com/glay415/backend-database/blob/main/theory/development/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5.md)
 ### Java
 
 - [참조 타입 변수](https://github.com/glay415/backend-database/blob/main/theory/development/java/Reference%20Variable.md)
