@@ -1,7 +1,8 @@
 # Chapter
 
 - [Development](#Development)
-- [Reference](#reference)
+- [Reading Now](#Reading-Now)
+- [Complete](#Complete)
 
 ## Development
 
@@ -12,9 +13,9 @@
 - [동일성과 동등성](https://github.com/glay415/backend-database/blob/main/theory/development/java/%EB%8F%99%EC%9D%BC%EC%84%B1%EA%B3%BC%20%EB%8F%99%EB%93%B1%EC%84%B1.md)
 ## Code
 - [inflearn-실전 스프링 데이터 jpa](https://github.com/glay415/backend-database/tree/main/code/springboot/data-jpa)
-## Reading-Now
+## Reading Now
 - 자바 ORM 표준 JPA 프로그래밍
 - 토비의 스프링 3.1 Vol.1
 - 프로그래밍 대회 공략을 위한 알고르짐 자료 구조 입문
-## Complete-Reading
+## Complete
 - 소프트웨어 중심사회의 컴퓨터 개론
