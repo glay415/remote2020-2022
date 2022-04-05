@@ -15,6 +15,7 @@
 - [빌드속도 빨라지는법-velog](https://velog.io/@dltkdgns3435/Intellij-Build-Run-Test-%EC%A2%80-%EB%8D%94-%EB%B9%A0%EB%A5%B4%EA%B2%8C-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0)
 ## Code
 - [inflearn-실전 스프링 데이터 jpa](https://github.com/glay415/backend-database/tree/main/code/springboot/data-jpa)
+- [inflearn-실전 querydsl](https://github.com/glay415/backend-database/tree/main/code/springboot/querydsl)
 ## Reading Now
 - 자바 ORM 표준 JPA 프로그래밍
 - 토비의 스프링 3.1 Vol.1
