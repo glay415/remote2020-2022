@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.example.practicequerydsl.entity.Member;
 import com.example.practicequerydsl.entity.Team;
+import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import static com.example.practicequerydsl.entity.QTeam.team;
 import static com.example.practicequerydsl.entity.QMember.member;
 
 @SpringBootTest
@@ -163,5 +165,64 @@ public class QuerydslBasicTest {
 			.fetch();
 
 		assertThat(result.size()).isEqualTo(2);
+	}
+
+	@Test
+	public void aggregation() {
+		List<Tuple> result = queryFactory
+			.select(
+				member.count(),
+				member.age.sum(),
+				member.age.avg(),
+				member.age.max(),
+				member.age.min()
+			)
+			.from(member)
+			.fetch();
+
+		Tuple tuple = result.get(0);
+		assertThat(tuple.get(member.count())).isEqualTo(4);
+		assertThat(tuple.get(member.age.sum())).isEqualTo(100);
+		assertThat(tuple.get(member.age.avg())).isEqualTo(25);
+		assertThat(tuple.get(member.age.max())).isEqualTo(40);
+		assertThat(tuple.get(member.age.min())).isEqualTo(10);
+	}
+
+	/*
+	 * 팀의 이름과 각 팀의 평균 연령을 구해라.
+	 */
+	@Test
+	public void group() {
+		List<Tuple> result = queryFactory
+			.select(team.name, member.age.avg())
+			.from(member)
+			.join(member.team, team)
+			.groupBy(team.name)
+			.fetch();
+
+		Tuple tupleA = result.get(0);
+		Tuple tupleB = result.get(1);
+
+		assertThat(tupleA.get(team.name)).isEqualTo("teamA");
+		assertThat(tupleA.get(member.age.avg())).isEqualTo(15);
+
+		assertThat(tupleB.get(team.name)).isEqualTo("teamB");
+		assertThat(tupleB.get(member.age.avg())).isEqualTo(35);
+	}
+
+	/*
+	 * 팀 A에 소속된 모든 회원
+	 */
+	@Test
+	public void join() {
+		List<Member> result = queryFactory
+			.selectFrom(member)
+			.join(member.team, team)
+			.where(team.name.eq("teamA"))
+			.fetch();
+
+		assertThat(result)
+			.extracting("username")
+			.containsExactly("member1", "member2");
 	}
 }
