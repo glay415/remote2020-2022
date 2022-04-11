@@ -12,6 +12,7 @@
 - [참조 타입 변수](https://github.com/glay415/backend-database/blob/main/theory/development/java/Reference%20Variable.md)
 - [동일성과 동등성](https://github.com/glay415/backend-database/blob/main/theory/development/java/%EB%8F%99%EC%9D%BC%EC%84%B1%EA%B3%BC%20%EB%8F%99%EB%93%B1%EC%84%B1.md)
 - [Deprecated](https://github.com/glay415/backend-database/blob/main/theory/development/java/Deprecated.md)
+- [String, StringBuffer, StringBuilder](https://github.com/glay415/backend-database/blob/main/theory/development/java/String%2C%20StringBuffer%2C%20StringBuilder.md)
 ## Code
 - [inflearn-실전 스프링 데이터 jpa](https://github.com/glay415/backend-database/tree/main/code/springboot/data-jpa)
 - [inflearn-실전 querydsl](https://github.com/glay415/backend-database/tree/main/code/springboot/querydsl)
