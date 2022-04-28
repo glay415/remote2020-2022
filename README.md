@@ -13,6 +13,10 @@
 - [동일성과 동등성](https://github.com/glay415/backend-database/blob/main/theory/development/java/%EB%8F%99%EC%9D%BC%EC%84%B1%EA%B3%BC%20%EB%8F%99%EB%93%B1%EC%84%B1.md)
 - [Deprecated](https://github.com/glay415/backend-database/blob/main/theory/development/java/Deprecated.md)
 - [String, StringBuffer, StringBuilder](https://github.com/glay415/backend-database/blob/main/theory/development/java/String%2C%20StringBuffer%2C%20StringBuilder.md)
+- [함수형 인터페이스](https://github.com/glay415/backend-database/blob/main/theory/development/java/%ED%95%A8%EC%88%98%ED%98%95%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.md)
+- [자바 직렬화](https://github.com/glay415/backend-database/blob/main/theory/development/java/%EC%9E%90%EB%B0%94%20%EC%A7%81%EB%A0%AC%ED%99%94.md)
+- [객체 생성패턴](https://github.com/glay415/backend-database/blob/main/theory/development/java/%EA%B0%9D%EC%B2%B4%20%EC%83%9D%EC%84%B1%20%ED%8C%A8%ED%84%B4.md)
+- [java reflection](https://github.com/glay415/backend-database/blob/main/theory/development/java/Java%20Reflection.md)
 ## Code
 - [inflearn-실전 스프링 데이터 jpa](https://github.com/glay415/backend-database/tree/main/code/springboot/data-jpa)
 - [inflearn-실전 querydsl](https://github.com/glay415/backend-database/tree/main/code/springboot/querydsl)
