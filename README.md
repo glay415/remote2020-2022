@@ -18,7 +18,7 @@
 - [객체 생성패턴](https://github.com/glay415/backend-database/blob/main/theory/development/java/%EA%B0%9D%EC%B2%B4%20%EC%83%9D%EC%84%B1%20%ED%8C%A8%ED%84%B4.md)
 - [java reflection](https://github.com/glay415/backend-database/blob/main/theory/development/java/Java%20Reflection.md)
 - ### Spring
--   [@SpringBootApplication](https://github.com/glay415/backend-database/blob/main/theory/development/java/spring/%40SpringBootApplication.md)
+  - [@SpringBootApplication](https://github.com/glay415/backend-database/blob/main/theory/development/java/spring/%40SpringBootApplication.md)
 ## Code
 - [inflearn-실전 스프링 데이터 jpa](https://github.com/glay415/backend-database/tree/main/code/springboot/data-jpa)
 - [inflearn-실전 querydsl](https://github.com/glay415/backend-database/tree/main/code/springboot/querydsl)
