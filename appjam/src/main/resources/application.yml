@@ -1,0 +1,39 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database: mysql
+    generate-ddl: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
+  datasource:
+    url: ${DB_URL:jdbc:mysql://database-1.cphw275orwnd.ap-northeast-2.rds.amazonaws.com:3306/appjam?serverTimezone=UTC&characterEncoding=UTF-8}
+    username: ${DB_USER:admin}
+    password: ${DB_PWD:050912sun}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  redis:
+    port: ${REDIS_PORT:6379}
+    host: ${REDIS_HOST:localhost}
+
+jwt:
+  header: ${JWT_HEADER:Authorization}
+  prefix: ${JWT_PREFIX:Bearer}
+  secretKey: ${JWT_SECRET_KEY:secret}
+  accessExp: ${JWT_ACCESS_EXP:3600}
+  refreshExp: ${JWT_REFRESH_EXP:3600}
+
+cloud:
+  aws:
+    s3:
+      bucket: ${BUCKET_NAM:appjam-s3}
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+    credentials:
+      instanceProfile: true
+
+  credentials:
+    access-key: ${ACCESS_KEY:}
+    secret-key: ${SECRET_KEY:}
