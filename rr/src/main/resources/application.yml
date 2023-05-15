@@ -1,0 +1,72 @@
+server:
+  port: 8888
+
+spring:
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  datasource:
+    url: ${MYSQL_URL}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maxLifetime: 580000
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD}
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  jpa:
+    show-sql: ${SHOW_SQL:false}
+
+cloud:
+  aws:
+    region:
+      static: ${AWS_S3_REGION:ap-northeast-2}
+    stack:
+      auto: false
+    credentials:
+      access-key: ${AWS_S3_ACCESS:s3_access}
+      secret-key: ${AWS_S3_SECRET:s3_secret}
+
+auth:
+  jwt:
+    secretKey: ${JWT_SECRET_KEY:dGVzdA==}
+    accessExp: ${JWT_ACCESS_EXP:3600}
+    refreshExp: ${JWT_REFRESH_EXP:3600}
+    header: ${JWT_HEADER:Authorization}
+    prefix: ${JWT_PREFIX:Bearer}
+  code:
+    exp: ${CODE_EXP:180}
+    limit: ${CODE_LIMIT:5}
+    limitExp: ${CODE_LIMIT_EXP:180}
+
+aws:
+  s3:
+    prefix: ${AWS_S3_PREFIX}
+    bucket: ${AWS_S3_BUCKET:bucket}
+    base-image-url: ${AWS_S3_URL:images/}
+  ses:
+    access-key: ${AWS_SES_ACCESS:ses_access}
+    secret-key: ${AWS_SES_SECRET:ses_secret}
+    region: ${AWS_SES_REGION:ap-northeast-2}
+
+rolls-royce:
+  logging:
+    name: rolls-royce.log
+    path: ${LOG_PATH:/}
+    size: 10 # 10mb
+  font:
+    path: ${FONT_PATH:/fonts}
+
+tmap:
+  app:
+    key: ${TMAP_KEY}
+
+logging:
+  level:
+    com:
+      amazonaws:
+        util:
+          EC2MetadataUtils: error
